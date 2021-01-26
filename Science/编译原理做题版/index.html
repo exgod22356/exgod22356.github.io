@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>编译原理做题版 - Icarus</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#f7f7f7"><meta name="application-name" content="Icaurs - Hexo Theme"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#f7f7f7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Icaurs - Hexo Theme"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要为编译原理的题目做法解答，基于mooc题目。人人都是做题家！"><meta property="og:type" content="blog"><meta property="og:title" content="编译原理做题版"><meta property="og:url" content="https://exgod22356.github.com/Science/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%81%9A%E9%A2%98%E7%89%88/"><meta property="og:site_name" content="Icarus"><meta property="og:description" content="本文主要为编译原理的题目做法解答，基于mooc题目。人人都是做题家！"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://exgod22356.github.com/img/og_image.png"><meta property="article:published_time" content="2021-01-02T19:10:30.000Z"><meta property="article:author" content="王钦砚"><meta property="article:tag" content="编译原理"><meta property="article:tag" content="做题家"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://exgod22356.github.com/Science/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%81%9A%E9%A2%98%E7%89%88/"},"headline":"Icarus","image":["https://exgod22356.github.com/img/og_image.png"],"datePublished":"2021-01-02T19:10:30.000Z","author":{"@type":"Person","name":"王钦砚"},"description":"本文主要为编译原理的题目做法解答，基于mooc题目。人人都是做题家！"}</script><link rel="canonical" href="https://exgod22356.github.com/Science/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%81%9A%E9%A2%98%E7%89%88/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css"><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Gitter" href="https://gitter.im/"><i class="fab fa-gitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-01-02T19:10:30.000Z" title="2021-01-02T19:10:30.000Z">2021-01-02</time></span><span class="level-item"><a class="link-muted" href="/categories/Science/">Science</a></span><span class="level-item">14 minutes read (About 2159 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">编译原理做题版</h1><div class="content"><p>本文主要为编译原理的题目做法解答，基于mooc题目。人人都是做题家！  </p>
+<a id="more"></a>  
+
+<h1 id="编译原理做题版"><a href="#编译原理做题版" class="headerlink" title="编译原理做题版"></a>编译原理做题版</h1><h2 id="第二章-文法与语言"><a href="#第二章-文法与语言" class="headerlink" title="第二章 文法与语言"></a>第二章 文法与语言</h2><h3 id="写出语言"><a href="#写出语言" class="headerlink" title="写出语言"></a>写出语言</h3><p>文法对应的所有句子的集合，也就是文法所能推导出来的所有句子的集合。写出即可。   </p>
+<h3 id="构造语法树"><a href="#构造语法树" class="headerlink" title="构造语法树"></a>构造语法树</h3><p>根为产生式左部，下面从左到右组合成为产生式右部，构建即可。  </p>
+<h3 id="如何生成目标串"><a href="#如何生成目标串" class="headerlink" title="如何生成目标串"></a>如何生成目标串</h3><p>产生式推导，使用=&gt;连接即可。  </p>
+<h3 id="二义性"><a href="#二义性" class="headerlink" title="二义性"></a>二义性</h3><p>对于同一句子，是否存在两棵不同的语法树，可判断二义性。  </p>
+<h3 id="给出语言的上下文无关文法"><a href="#给出语言的上下文无关文法" class="headerlink" title="给出语言的上下文无关文法"></a>给出语言的上下文无关文法</h3><p><strong>上下文无关文法</strong>： 左侧必须为非终结符 且满足1型文法|β|&gt;=|α|<br>无特定技巧，注意递归思想，注意数据范围，使用独特方法规范数据范围即可。  </p>
+<h3 id="给出语言的三型文法"><a href="#给出语言的三型文法" class="headerlink" title="给出语言的三型文法"></a>给出语言的三型文法</h3><p><strong>三型文法</strong>： 右侧为左线性或者右线性，即只能aA与a，或只能Aa与a。<br>也无特定技巧，注意三型文法规范。  </p>
+<h2 id="第三章-词法分析"><a href="#第三章-词法分析" class="headerlink" title="第三章 词法分析"></a>第三章 词法分析</h2><h3 id="画DFA"><a href="#画DFA" class="headerlink" title="画DFA"></a>画DFA</h3><p>DFA状态是确定的，每一个输入对应确定的下一个状态，没有ε边。注意该点。进行绘画即可。  </p>
+<h3 id="构造DFA"><a href="#构造DFA" class="headerlink" title="构造DFA"></a>构造DFA</h3><p>首先需要NFA，这时候需要观察题干，得到NFA的所有字母，所有状态，转换关系，开始状态，结束状态。  </p>
+<p>然后将转换关系，绘制成NFA表格。  </p>
+<p>得到NFA表格后，扩充状态，如x状态在输入1后能进入x或y状态，则将xy状态加入表格，继续执行该过程，直至结束。  </p>
+<p>得到该表格后，将终止结点与非终止结点分为两个集合，在根据输入的不同，继续划分集合，直到无法再分。得到最简DFA。  </p>
+<p>画出图，即可。  </p>
+<h3 id="写正规式"><a href="#写正规式" class="headerlink" title="写正规式"></a>写正规式</h3><p>注意星号，或号用法。  </p>
+<h2 id="第四章-自顶向下语法分析"><a href="#第四章-自顶向下语法分析" class="headerlink" title="第四章 自顶向下语法分析"></a>第四章 自顶向下语法分析</h2><h3 id="first集求法"><a href="#first集求法" class="headerlink" title="first集求法"></a>first集求法</h3><p>first集合含义便是该非终结符所能产生的第一个字符，按照此规则去找。A-&gt;a则只有a，A-&gt;Ba则观察B是否成产生ε，如果能则将First(B)与a加入集合，不能则只加入First(B)，没有a。多个非终结符推出ε则以此类推。注意，epsilon本身也可以进入first集合。  </p>
+<h3 id="follow集求法"><a href="#follow集求法" class="headerlink" title="follow集求法"></a>follow集求法</h3><p>follow集合意义是该非终结符后面所有能接的第一个字符。那么观察产生式右边。比如A，如果只有S-&gt;Aa则follow只有a，如果只有S-&gt;A并且最后到了结束则加入#，如果S-&gt;AB，则将first(B)放入follow(A)，如果B能推出ε或者A为右部，则将follow(S)放入follow(A)。   </p>
+<h3 id="select集合构建"><a href="#select集合构建" class="headerlink" title="select集合构建"></a>select集合构建</h3><p>select集合是针对产生式的，注意。S-&gt;AB如果产生式右部不是空串，则为first(S)，AB可以推出空串，则first(S)∪follow(S)-ε  </p>
+<h3 id="LL-1-文法判断"><a href="#LL-1-文法判断" class="headerlink" title="LL(1)文法判断"></a>LL(1)文法判断</h3><p>对于相同左部的产生式而言，产生式的select集合不相交。  </p>
+<h3 id="预测分析表"><a href="#预测分析表" class="headerlink" title="预测分析表"></a>预测分析表</h3><p>纵轴为产生式左部，横轴为输入符号，中间为对应产生式。  </p>
+<h3 id="消除左递归"><a href="#消除左递归" class="headerlink" title="消除左递归"></a>消除左递归</h3><p>对于A-&gt;Aα|β而言，为直接左递归，可以改写为A-&gt;βA’ A’-&gt;αA’的等价形式。<br>存在间接左递归，可以先带入化成直接左递归后处理。  </p>
+<h3 id="提取左公因子"><a href="#提取左公因子" class="headerlink" title="提取左公因子"></a>提取左公因子</h3><p>对于A-&gt;aB1|aB2|……|aBn|y 可以提取左公因子后，得到A-&gt;aB|y B-&gt;B1|B2|……|Bn  </p>
+<p><strong>注意</strong>，消除左递归并且提取左公因子后不一定为LL(1)文法。  </p>
+<h2 id="第五章-自底向上语法分析"><a href="#第五章-自底向上语法分析" class="headerlink" title="第五章 自底向上语法分析"></a>第五章 自底向上语法分析</h2><h3 id="firstvt求法"><a href="#firstvt求法" class="headerlink" title="firstvt求法"></a>firstvt求法</h3><p>注意区别于first集合，firstvt求法：T-&gt;a…则加入a，T-&gt;R…则加入firstvt(R),T-&gt;Ra…则加入firstvt(R)与a。如此递归。  </p>
+<h3 id="lastvt求法"><a href="#lastvt求法" class="headerlink" title="lastvt求法"></a>lastvt求法</h3><p>与firstvt类似，T-&gt;…a则加入a，T-&gt;…R则加入lastvt(R)，T-&gt;…aR则加入a和lastvt(R)，如此递归。  </p>
+<h3 id="算符优先级判断"><a href="#算符优先级判断" class="headerlink" title="算符优先级判断"></a>算符优先级判断</h3><p>对于ab而言，a=b。对于aAb而言，a=b，a小于firstvt(A)，lastvt(A)大于b，如此扫描。<br>对于画表而言，横纵都是终结符，大小比较注意横纵关系。<br>没有冲突则为算符优先级文法。  </p>
+<h3 id="短语，句柄，素短语，最左素短语"><a href="#短语，句柄，素短语，最左素短语" class="headerlink" title="短语，句柄，素短语，最左素短语"></a>短语，句柄，素短语，最左素短语</h3><p>短语：子树的叶子从左到右<br>句柄：最左的只有两层的子树的叶子从左到右<br>素短语：至少包含一个非终结符的，与其他素短语不相交的短语<br>最左素短语：语法树内最左的一个。  </p>
+<h3 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h3><p>画表，观察栈顶和输入字符，比较关系，当遇到大于号和小于号配对时候则规约，不然移进。  </p>
+<h2 id="第六章-LR分析法"><a href="#第六章-LR分析法" class="headerlink" title="第六章 LR分析法"></a>第六章 LR分析法</h2><h3 id="FSM构建"><a href="#FSM构建" class="headerlink" title="FSM构建"></a>FSM构建</h3><p>首先增加拓广文法：增加个开头。<br>将点放在拓广文法右部开头，如果是非终结符，则在方框内增加该非终结符的产生式，并将点放在右部开头。<br>将点后续相同符号的，引出一条线指向新方框，方框内移动点到该符号后面，并和上面处理点后非终结符一样。<br>迭代此过程，直到所有状态结束。  </p>
+<h3 id="分析表构建"><a href="#分析表构建" class="headerlink" title="分析表构建"></a>分析表构建</h3><p>注意ACTION表和GOTO表，如果点后为终结符则action(k,a) = Sj，k为当前表的标号，a为该中介符号j为后续表的标号。<br>如果点后为非终结符A，则goto(k,A) = j<br>如果项目为规约项目，则对于任何终结符a,Action(k,a)=rj，rj为目标产生式。注意这个a是任意a。<br>如果结束了，则放入acc<br>其他为error  </p>
+<h3 id="分析表使用"><a href="#分析表使用" class="headerlink" title="分析表使用"></a>分析表使用</h3><p>如果右边为si，则单纯地改变状态。<br>如果右边为ri，则先将栈内符号可规约的符号弹出，状态置为剩余的栈顶部符号所存在的状态，根据此状态和规约出来的非终结符进行跳转。<br>如此循环，直到结束。  </p>
+<h3 id="LR-0-判断"><a href="#LR-0-判断" class="headerlink" title="LR(0)判断"></a>LR(0)判断</h3><p>点后为终结符，则为移进项目。<br>点后为非终结符，则为待约项目。<br>点后为结束，则为规约项目。<br>移进，规约同时存在会冲突。规约，规约存在也会冲突。  </p>
+<h3 id="SLR-1-判断"><a href="#SLR-1-判断" class="headerlink" title="SLR(1)判断"></a>SLR(1)判断</h3><p>对于移进项目的非终结符b，规约项目的不同产生式左部B，C，如果b和Follow(B) Follow(C) 互不相交，则为SLR(1)文法，判断时候根据输入字符在这三者哪个里面决定移进还是规约。  </p>
+<h2 id="第七章-语法制导的翻译"><a href="#第七章-语法制导的翻译" class="headerlink" title="第七章 语法制导的翻译"></a>第七章 语法制导的翻译</h2><h3 id="标出属性值"><a href="#标出属性值" class="headerlink" title="标出属性值"></a>标出属性值</h3><p>根据语义，带入语法树即可。  </p>
+<h3 id="翻译成三地址码"><a href="#翻译成三地址码" class="headerlink" title="翻译成三地址码"></a>翻译成三地址码</h3><p>TAC三地址码 OP A1 A2 A3  类似汇编 注意操作变量个数  </p>
+<h2 id="第八章-代码优化"><a href="#第八章-代码优化" class="headerlink" title="第八章 代码优化"></a>第八章 代码优化</h2><h3 id="分基本块"><a href="#分基本块" class="headerlink" title="分基本块"></a>分基本块</h3><p>程序的第一个语句；goto的目标语句；跟在条件转移语句后面的语句 按照此切分  </p>
+<h3 id="流图"><a href="#流图" class="headerlink" title="流图"></a>流图</h3><p>有向边：能到达则画有向边 根据go 语句执行顺序来确定  </p>
+<h3 id="找循环"><a href="#找循环" class="headerlink" title="找循环"></a>找循环</h3><p>D(N) 必经结点集合，指从开始到这个点，绕不开的结点的集合
+当存在a-&gt;b的边，而且a的必经结点有b，则为回边<br>回边a-&gt;b 循环入口为a 出口为b 先放入入口 再放入出口，直到栈顶的前驱都是a为止，找到循环（类似BFS）  </p>
+<h3 id="DAG优化"><a href="#DAG优化" class="headerlink" title="DAG优化"></a>DAG优化</h3><p>将所有右边的，意义相同的变量放在DAG一个结点中，以操作符的方法增加边或结点，构造DAG，然后根据图，重新命名变量，重新构造式子，最后根据需要引用什么来赋值  </p>
+<h2 id="第九章-目标代码生成"><a href="#第九章-目标代码生成" class="headerlink" title="第九章 目标代码生成"></a>第九章 目标代码生成</h2><h3 id="根据TAC序列生成目标代码"><a href="#根据TAC序列生成目标代码" class="headerlink" title="根据TAC序列生成目标代码"></a>根据TAC序列生成目标代码</h3><p>先翻译代码，然后尽量使用寄存器。  </p>
+<script>
+        document.querySelectorAll('.not-gallery-item')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div><div class="article-licensing box"><div class="licensing-title"><p>编译原理做题版</p><p><a href="https://exgod22356.github.com/Science/编译原理做题版/">https://exgod22356.github.com/Science/编译原理做题版/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>王钦砚</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-01-02</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%81%9A%E9%A2%98%E5%AE%B6/">做题家</a></div><div class="sharethis-inline-share-buttons"></div><script src="//platform-api.sharethis.com/js/sharethis.js#property=5ab6f60ace89f00013641890&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Science/%E7%99%BD%E5%B8%BD%E5%AD%90%E8%B0%88web%E5%AE%89%E5%85%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">白帽子谈web安全读书笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Science/raft%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"><span class="level-item">Raft项目总结 </span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://riyugo.com/i/2021/01/27/6nmiax.jpg" alt="王钦砚"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">王钦砚</p><p class="is-size-6 is-block">Web Developer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Earth, Solar System</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">35</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">24</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/exgod22356" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/exgod22356"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ego/"><span class="level-start"><span class="level-item">Ego</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Romance/"><span class="level-start"><span class="level-item">Romance</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/Science/"><span class="level-start"><span class="level-item">Science</span></span><span class="level-end"><span class="level-item tag">27</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ACM/"><span class="tag">ACM</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C-Primer/"><span class="tag">C++Primer</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GO/"><span class="tag">GO</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Introduction/"><span class="tag">Introduction</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%81%9A%E9%A2%98%E5%AE%B6/"><span class="tag">做题家</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9F%BA%E7%A1%80/"><span class="tag">基础</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/"><span class="tag">安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/"><span class="tag">容器化</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A8%A1%E6%9D%BF/"><span class="tag">模板</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E7%BC%96/"><span class="tag">汇编</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tag">编程</span><span class="tag">19</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"><span class="tag">编译原理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/"><span class="tag">网络</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%97%E5%8F%A5/"><span class="tag">诗句</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E7%BC%96%E7%A8%8B/"><span class="tag">面向面试编程</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a><p class="is-size-7"><span>&copy; 2021 王钦砚</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><div id="outdated"><h6>Your browser is out-of-date!</h6><p>Update your browser to view this website correctly.&amp;npsb;<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p><p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p></div><script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script><script>window.addEventListener("load", function () {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'object-fit' // display on IE11 or below
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script><!-- hexo injector body_end start -->
+    <script>
+    (() => {
+        function switchTab() {
+            if (!location.hash) {
+              return;
+            }
+            Array
+                .from(document.querySelectorAll('.tab-content'))
+                .forEach($tab => {
+                    $tab.classList.add('is-hidden');
+                });
+            Array
+                .from(document.querySelectorAll('.tabs li'))
+                .forEach($tab => {
+                    $tab.classList.remove('is-active');
+                });
+            const $activeTab = document.querySelector(location.hash);
+            if ($activeTab) {
+                $activeTab.classList.remove('is-hidden');
+            }
+            const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+            if ($tabMenu) {
+                $tabMenu.parentElement.classList.add('is-active');
+            }
+        }
+        switchTab();
+        window.addEventListener('hashchange', switchTab, false);
+    })();
+    </script>
+    <!-- hexo injector body_end end --></body></html>
