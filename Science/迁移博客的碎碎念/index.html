@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>迁移博客的碎碎念 - Icarus</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#f7f7f7"><meta name="application-name" content="Icaurs - Hexo Theme"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#f7f7f7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Icaurs - Hexo Theme"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要是一些把博客迁移到hexo过程中发生的各种技术问题。"><meta property="og:type" content="blog"><meta property="og:title" content="迁移博客的碎碎念"><meta property="og:url" content="https://exgod22356.github.com/Science/%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/"><meta property="og:site_name" content="Icarus"><meta property="og:description" content="本文主要是一些把博客迁移到hexo过程中发生的各种技术问题。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://exgod22356.github.com/img/og_image.png"><meta property="article:published_time" content="2021-01-28T11:10:30.000Z"><meta property="article:author" content="王钦砚"><meta property="article:tag" content="开发"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://exgod22356.github.com/Science/%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/"},"headline":"Icarus","image":["https://exgod22356.github.com/img/og_image.png"],"datePublished":"2021-01-28T11:10:30.000Z","author":{"@type":"Person","name":"王钦砚"},"description":"本文主要是一些把博客迁移到hexo过程中发生的各种技术问题。"}</script><link rel="canonical" href="https://exgod22356.github.com/Science/%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css"><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Gitter" href="https://gitter.im/"><i class="fab fa-gitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-01-28T11:10:30.000Z" title="2021-01-28T11:10:30.000Z">2021-01-28</time></span><span class="level-item"><a class="link-muted" href="/categories/Science/">Science</a></span><span class="level-item">15 minutes read (About 2176 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">迁移博客的碎碎念</h1><div class="content"><p>本文主要是一些把博客迁移到hexo过程中发生的各种技术问题。   </p>
+<a id="more"></a>    
+
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于之前的博客太丑了，阅读体验极差，响应式布局像个傻逼一样（电脑横屏的文章布局和手机一样，字贼大，将浏览器窗口侧边收紧后阅读体验反而变好），我决定迁移博客。</p>
+<h3 id="迁移准备"><a href="#迁移准备" class="headerlink" title="迁移准备"></a>迁移准备</h3><p>博客全部在github上，所以只要找到一个博客系统，能够兼容之前的markdown就行了。如果没有兼容，至少改动不需要太多。由于在github page上，那么存在以下几个备选方案：</p>
+<ul>
+<li><strong>Hugo</strong>:拿GO写的静态站点生成器</li>
+<li><strong>Hexo</strong>:基于Node.js的博客框架</li>
+<li><strong>jekyll</strong>:基于ruby的静态博客网站生成器</li>
+</ul>
+<p>以上就是几个备选方案，或许存在我不知道的备选方案（比如自己写？），所以我没有考虑。</p>
+<p><strong>Why hexo？</strong></p>
+<p>没什么原因，因为hugo没听说过，jekyll忘了怎么拼写（虽然之前用的就是jekyll，但我还是懒得部署本地ruby环境）。</p>
+<p>选择完hexo之后，就可以看看博客主题，毕竟我不会前端，还是拿别人写好的比较好。</p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo官网主题</a>提供了许多可供选择的主题，可以直接点进仓库看，可以自己部署，但我更喜欢直接fork别人仓库后改文章代码，网页配置之类的东西，毕竟简单（懒）。</p>
+<p>我用的是<a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-icarus/tree/site">icarus</a>，仓库地址在这里，注意这个地址是site分支，也就是实际网站源码的分支。下载完源码之后记得git切分支。</p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p><code>Node.js</code>和<code>Hexo</code>的安装就不多说了，官网很详细。同时在clone完上面仓库，切换到site分支后，进到对应文件夹，执行以下命令安装依赖。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></tbody></table></figure>
+<p>他会根据<code>package.json</code>文件去安装依赖。虽然有些依赖可能已经过时，但能用就行。这个过程可能很长，记得换源。（我自己都没换）</p>
+<p>安装完成后，执行以下命令启动服务器：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></tbody></table></figure>
+<p>也可以简写为<code>hexo s</code>，这时候访问<code>localhost:4000</code>就应该可以访问到页面了。</p>
+<h4 id="小插曲"><a href="#小插曲" class="headerlink" title="小插曲"></a>小插曲</h4><p>安装完hexo后，电脑的<code>ms-setting</code>没有了。这个的直接后果是<code>个性化</code>，<code>显示设置</code>这些右键的设置选项打不开，会报错说找不到。电脑的开始界面点不开，搜索界面搜索到的软件全部打不开，但是桌面都很正常，应用软件也都打得开。</p>
+<p>最初我怀疑是path被搞丢了的问题，但是其实不是，但还是记录以下，这里是path搞丢了的解决方案：</p>
+<ul>
+<li><code>Win</code>+<code>R</code>进入到运行，输入<code>regedit</code>，进入到注册表编辑器</li>
+<li>进入到<code>HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Session Manager\Environment</code>，找到path，复制。</li>
+<li><code>右键</code>点击我的电脑，<code>属性</code>，<code>高级系统设置</code>，<code>环境变量</code>，去里面找到path，进行比对。不同就恢复以下。</li>
+</ul>
+<p>这可能是一个path丢失的解决方案，但并没有解决我的问题。于是随便搜了一下。我执行了以下步骤，但<strong>具体哪一个步骤真正解决了问题，我也不知道</strong>：</p>
+<ul>
+<li><code>Win</code>+<code>X</code>，可以用管理员模式点开<code>powershell</code>，这个应该不依赖<code>ms-setting</code>。</li>
+<li>执行<code>sfc /scannow</code>，扫描并修复损坏或丢失系统文件。</li>
+<li>执行<code>shutdown -r</code>重启。</li>
+</ul>
+<p>虽然最后解决了问题，但再次说一下，<strong>我也不知道以上哪个步骤真正解决了问题</strong>，仅供参考。</p>
+<h3 id="部署和配置"><a href="#部署和配置" class="headerlink" title="部署和配置"></a>部署和配置</h3><p>回到主题，完成运行之后，我们需要更改配置，来供自己使用。更改配置在<code>_config.yml</code>里面，具体选项有着具体的文档解释，反正可以运行看效果，所以可以随便试试。本博客采用的主题除了这一个yaml文件外，还有=<code>_config.post.tml</code>和<code>_config.icarus.yml</code>文件，这些主要看文档怎么写和自己多试试。</p>
+<h4 id="插曲2"><a href="#插曲2" class="headerlink" title="插曲2"></a>插曲2</h4><p>在本地运行调试之后，我发现个严重的问题，本地访问需要20s。这个问题挺好排查的，因为本地不可能这么慢。点开<code>F12</code>看调试框，可以看到有个叫<code>fontawsome</code>的css文件需要联网获得，并且failed。这样就存在了访问慢的问题。</p>
+<p>解决方法是在配置文件中改CDN，具体参考yaml文档的解释。</p>
+<h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><p>在yaml中设置<code>type: git</code>，<code>repo: 远程git仓库</code>，<code>branch: 分支</code>就行，记得设置到master分支才有效。</p>
+<p>由于我们安装了别人的依赖，所以不需要再安装deploy。在设置完成后，执行以下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></tbody></table></figure>
+<p>等待即可。不出以外的话应该会成功。出意外的话github会给你发邮件。</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>这里简单介绍一些配置。</p>
+<p><code>toc</code>可以开启目录。需要提前配置。</p>
+<p><code>categories</code>设置分类。<code>tags</code>设置文章tag。</p>
+<p><code>mathjax</code>我自己的使用方法是在文章前面head里面加cdn来设置的。也有模板提供的解决方法，具体查模板文档就行。</p>
+<h3 id="题外话-algolia"><a href="#题外话-algolia" class="headerlink" title="题外话 algolia"></a>题外话 algolia</h3><p>algolia是个前端搜索插件，好用是好用，但部署过程有些复杂，导致我收了不知道多少个github邮件说失败。这里简单介绍一下。</p>
+<p><strong>实际解决方案</strong>：</p>
+<p>先说实际解决方案——用别人的api key。自己申请的key由于硬编码到<code>——config.yml</code>中，因此会被爬虫爬到（三分钟就被警告了），并且会被发邮件警告。所以用别人的key是最好的。</p>
+<p>就我自己的话，是用的别人的api key，抄的别人的github action来用的，好处是省心，坏处是有些缺德。</p>
+<p><strong>理论解决方案</strong>：</p>
+<p>首先注册algolia账号。它的官网访问速度很迷，所以慢慢等。注册之后需要填公司，瞎填就行。</p>
+<p>新建一个index，自己命名一下，然后在左边找到api key栏目，新建一个带各种权限的api key。</p>
+<p>在yaml中设置各种选项，如下：</p>
+<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">algolia:</span></span><br><span class="line">  <span class="attr">applicationID:</span> <span class="string">'your applicationID'</span></span><br><span class="line">  <span class="attr">apiKey:</span> <span class="string">'your apiKey'</span></span><br><span class="line">  <span class="attr">adminApiKey:</span> <span class="string">'your adminApiKey'</span></span><br><span class="line">  <span class="attr">indexName:</span> <span class="string">'your indexName'</span></span><br><span class="line">  <span class="attr">chunkSize:</span> <span class="number">5000</span></span><br></pre></td></tr></tbody></table></figure>
+<p>这里api key就是刚才申请的，其他的照抄即可。</p>
+<p>除此之外，还要设置环境变量，如下所示：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> HEXO_ALGOLIA_INDEXING_KEY=apiKey</span><br></pre></td></tr></tbody></table></figure>
+<p>不是很懂它的两次apiKey，由于我们硬编码到yaml中了，所以必定会被爬虫爬到。所以还是用别人的。</p>
+<p>在完成环境变量后，安装<code>hexo-algolia</code>插件，如下：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-algolia --save</span><br></pre></td></tr></tbody></table></figure>
+<p>然后运行即可。</p>
+<p><strong>注意</strong>：我没试过理论方法，毕竟被github发了一万个邮件，所以不保证正确性。觉得懒的可以直接抄github action就行。</p>
+<h3 id="总结和其他"><a href="#总结和其他" class="headerlink" title="总结和其他"></a>总结和其他</h3><p>整个过程花了我两天还是一天，总之比预想要快，因为blog的一些标签都是兼容的，这就很好办，没有过多的迁移成本。</p>
+<p>但也存在一些问题，比如我之前的blog的格式就存在很多问题，显示上不好看，但无伤大雅。一些硬编码的链接也出现了问题，比如目录错误之类的，有时间慢慢解决吧。（也就是不解决了）</p>
+<p>同时还有个不知道是bug还是feature的东西，在渲染markdown table的时候渲染失败，两个减号会被渲染成unicode 2013字符。暂时解决方法是通过typora的开发者界面复制html代码，然后在raw标签中直接粘贴进去。虽然不优雅，但可行。</p>
+<p>换了博客主题写作心情也会变好。</p>
+<script>
+        document.querySelectorAll('.not-gallery-item')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div><div class="article-licensing box"><div class="licensing-title"><p>迁移博客的碎碎念</p><p><a href="https://exgod22356.github.com/Science/迁移博客的碎碎念/">https://exgod22356.github.com/Science/迁移博客的碎碎念/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>王钦砚</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-01-28</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E5%BC%80%E5%8F%91/">开发</a></div><div class="sharethis-inline-share-buttons"></div><script src="//platform-api.sharethis.com/js/sharethis.js#property=5ab6f60ace89f00013641890&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Science/react%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="level-item">React学习笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="https://riyugo.com/i/2021/01/27/6nmiax.jpg" alt="王钦砚"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">王钦砚</p><p class="is-size-6 is-block">Web Developer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Earth, Solar System</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">36</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">24</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/exgod22356" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/exgod22356"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#前言"><span class="level-left"><span class="level-item">1</span><span class="level-item">前言</span></span></a></li><li><a class="level is-mobile" href="#迁移准备"><span class="level-left"><span class="level-item">2</span><span class="level-item">迁移准备</span></span></a></li><li><a class="level is-mobile" href="#环境准备"><span class="level-left"><span class="level-item">3</span><span class="level-item">环境准备</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#小插曲"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">小插曲</span></span></a></li></ul></li><li><a class="level is-mobile" href="#部署和配置"><span class="level-left"><span class="level-item">4</span><span class="level-item">部署和配置</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#插曲2"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">插曲2</span></span></a></li><li><a class="level is-mobile" href="#部署"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">部署</span></span></a></li><li><a class="level is-mobile" href="#配置"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">配置</span></span></a></li></ul></li><li><a class="level is-mobile" href="#题外话-algolia"><span class="level-left"><span class="level-item">5</span><span class="level-item">题外话 algolia</span></span></a></li><li><a class="level is-mobile" href="#总结和其他"><span class="level-left"><span class="level-item">6</span><span class="level-item">总结和其他</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ego/"><span class="level-start"><span class="level-item">Ego</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Romance/"><span class="level-start"><span class="level-item">Romance</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/categories/Science/"><span class="level-start"><span class="level-item">Science</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ACM/"><span class="tag">ACM</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C-Primer/"><span class="tag">C++Primer</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GO/"><span class="tag">GO</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Introduction/"><span class="tag">Introduction</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%81%9A%E9%A2%98%E5%AE%B6/"><span class="tag">做题家</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9F%BA%E7%A1%80/"><span class="tag">基础</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/"><span class="tag">安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/"><span class="tag">容器化</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A8%A1%E6%9D%BF/"><span class="tag">模板</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E7%BC%96/"><span class="tag">汇编</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tag">编程</span><span class="tag">19</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"><span class="tag">编译原理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/"><span class="tag">网络</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%97%E5%8F%A5/"><span class="tag">诗句</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E7%BC%96%E7%A8%8B/"><span class="tag">面向面试编程</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a><p class="is-size-7"><span>&copy; 2021 王钦砚</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><div id="outdated"><h6>Your browser is out-of-date!</h6><p>Update your browser to view this website correctly.&amp;npsb;<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p><p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p></div><script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script><script>window.addEventListener("load", function () {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'object-fit' // display on IE11 or below
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script><!-- hexo injector body_end start -->
+    <script>
+    (() => {
+        function switchTab() {
+            if (!location.hash) {
+              return;
+            }
+            Array
+                .from(document.querySelectorAll('.tab-content'))
+                .forEach($tab => {
+                    $tab.classList.add('is-hidden');
+                });
+            Array
+                .from(document.querySelectorAll('.tabs li'))
+                .forEach($tab => {
+                    $tab.classList.remove('is-active');
+                });
+            const $activeTab = document.querySelector(location.hash);
+            if ($activeTab) {
+                $activeTab.classList.remove('is-hidden');
+            }
+            const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+            if ($tabMenu) {
+                $tabMenu.parentElement.classList.add('is-active');
+            }
+        }
+        switchTab();
+        window.addEventListener('hashchange', switchTab, false);
+    })();
+    </script>
+    <!-- hexo injector body_end end --></body></html>
