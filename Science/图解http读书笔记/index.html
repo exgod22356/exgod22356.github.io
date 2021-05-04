@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>图解HTTP读书笔记 - Icarus</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#f7f7f7"><meta name="application-name" content="Icaurs - Hexo Theme"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#f7f7f7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Icaurs - Hexo Theme"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要是看图解HTTP书的一些学习笔记。"><meta property="og:type" content="blog"><meta property="og:title" content="图解HTTP读书笔记"><meta property="og:url" content="https://exgod22356.github.com/Science/%E5%9B%BE%E8%A7%A3http%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="Icarus"><meta property="og:description" content="本文主要是看图解HTTP书的一些学习笔记。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://exgod22356.github.com/img/og_image.png"><meta property="article:published_time" content="2021-04-23T11:10:30.000Z"><meta property="article:author" content="王钦砚"><meta property="article:tag" content="网络"><meta property="article:tag" content="开发"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://exgod22356.github.com/Science/%E5%9B%BE%E8%A7%A3http%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"},"headline":"Icarus","image":["https://exgod22356.github.com/img/og_image.png"],"datePublished":"2021-04-23T11:10:30.000Z","author":{"@type":"Person","name":"王钦砚"},"description":"本文主要是看图解HTTP书的一些学习笔记。"}</script><link rel="canonical" href="https://exgod22356.github.com/Science/%E5%9B%BE%E8%A7%A3http%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css"><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Gitter" href="https://gitter.im/"><i class="fab fa-gitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-04-23T11:10:30.000Z" title="2021-04-23T11:10:30.000Z">2021-04-23</time></span><span class="level-item"><a class="link-muted" href="/categories/Science/">Science</a></span><span class="level-item">12 minutes read (About 1838 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">图解HTTP读书笔记</h1><div class="content"><p>本文主要是看图解HTTP书的一些学习笔记。   </p>
+<a id="more"></a>   
+
+<h3 id="第一章-Web与网路基础"><a href="#第一章-Web与网路基础" class="headerlink" title="第一章 Web与网路基础"></a>第一章 Web与网路基础</h3><p>URI：由某个协议方案表示的资源的定位标识符，协议方案即http ftp等。</p>
+<p>URL表示资源的地点，URI表示某一互联网资源，URL是URI的子集。</p>
+<p>URI格式：</p>
+<p><code>http://user:pass@www.example.jp:80/dir/index.htm?uid=1#ch1</code></p>
+<p><code>http://</code>为协议方案名，如telnet，<code>user:pass</code>为登录信息，可选项，如用户名密码，<code>www.example.jp</code>为服务器地址，<code>/dir/index.htm</code>为带层次的文件路径，与UNIX文件系统类似，<code>uid=1</code>为查询字符串，<code>ch1</code>为片段表示符，表示已获取的资源中的子资源。</p>
+<h3 id="第二章-简单HTTP协议"><a href="#第二章-简单HTTP协议" class="headerlink" title="第二章 简单HTTP协议"></a>第二章 简单HTTP协议</h3><p>HTTP请求报文第一行：方法 URI 版本号</p>
+<p>响应报文第一行：版本号 状态码 原因短语 如200 OK</p>
+<p>HTTP不保存状态，使用URI定位资源。</p>
+<p>GET用于请求访问已经被URI识别的资源。</p>
+<p>POST传输实体主体。</p>
+<p>PUT传输文件，保存到URI指定的位置，一般网站不适用该方法。</p>
+<p>HEAD与GET一样，但不反悔报文主体。</p>
+<p>DELETE删除，PUT相反。</p>
+<p>OPTION查看支持的方法。</p>
+<p>TRACE让Web服务器之前的请求通信环回给客户端。</p>
+<p>CONNECT要启用使用隧道实现TCP通信，主要使用SSL和TLS加密后传输。</p>
+<p>HTTP1.1由持久连接，只要任意一端没有明确断开，则保持连接。减少重复连接的开销。</p>
+<p>管线化：并行发送多个请求，接收多个响应。</p>
+<p>HTTP是无状态协议，保存状态可以使用Cookie技术，服务端发送Set-Cookie字段来通知客户端保存Cookie。</p>
+<h3 id="第三章-HTTP报文里面的HTTP信息"><a href="#第三章-HTTP报文里面的HTTP信息" class="headerlink" title="第三章 HTTP报文里面的HTTP信息"></a>第三章 HTTP报文里面的HTTP信息</h3><p>空行CR+LF，用于区分首部和主体。</p>
+<p>实体可以经过gzip等编码压缩再传送。</p>
+<p>1.1有传输编码的机制，只定义作用于分块传输。</p>
+<p>multipart/form-data 在Web表单文件上传时候使用。</p>
+<p>multipart/byteranges 状态码206 响应报文包含多个范围的内容的时候使用。</p>
+<p>多部分对象集合时候，需要在首部字段加上content-type</p>
+<p>获取内容可以只请求一部分。</p>
+<p>Accept Accept-Charset等用于协商返回最合适的内容，如英文中文页面。</p>
+<p>内容协商有服务器驱动协商（服务器根据发送的信息判定协商），客户端驱动协商（JS自动选择），透明协商（各自进行协商）。</p>
+<h3 id="第四章-状态码"><a href="#第四章-状态码" class="headerlink" title="第四章 状态码"></a>第四章 状态码</h3><p>1XX：信息性状态码，表示正在处理。</p>
+<p>2XX：成功状态码，表示正常处理完毕。</p>
+<p>3XX：重定向状态码，表示需要进行腹甲草错来完成请求。</p>
+<p>4XX：客户端错误状态码，服务器无法处理请求。</p>
+<p>5XX：服务器错误状态码，服务器处理请求出错。</p>
+<p>只要遵循定定义，自行创建也没有问题。</p>
+<p>200 OK，表示正常处理。</p>
+<p>204 No Content，表示处理成功，但没有资源可返回。</p>
+<p>206 Partial Content，表示对资源某一部分的请求处理成功。</p>
+<p>301 Moved Permently，永久重定向，URI已经更新。</p>
+<p>302 Found，临时重定向，资源对应的URI将来可能该百年，书签不会变。</p>
+<p>303 See Other，明确应当采用GET，301，302禁止将POST变成GET。</p>
+<p>304 Not Modified，资源找到，但未找到符合条件的请求。</p>
+<p>307 Temporary Redirect，和302相同。</p>
+<p>400 Bad Request，表示请求报文有语法错误。</p>
+<p>401 Unauthorized，表示需要有认证信息。</p>
+<p>403 Forbidden，明确拒绝访问。</p>
+<p>404 Not Found，表示无法找到请求的资源，也可以拒绝请求。</p>
+<p>500 Internal Server Error，执行请求时候发生了错误。</p>
+<p>503 Service Unavailable，超负载或停机维护。</p>
+<h3 id="第五章-与HTTP协作的Web服务器"><a href="#第五章-与HTTP协作的Web服务器" class="headerlink" title="第五章 与HTTP协作的Web服务器"></a>第五章 与HTTP协作的Web服务器</h3><p>单服务器可以用虚拟主机假想有多台服务器，发送HTTP请求时候必须在首部完整指定主机名或域名的URI。</p>
+<p>代理：有转发功能的应用程序。</p>
+<p>网关：转发其他服务器通信数据的服务器，就像自己拥有资源的服务器一样处理。</p>
+<p>隧道：客户端和服务器之间中转。</p>
+<p>代理服务器不改变请求UR，会写入Via信息。</p>
+<p>代理服务器分是否使用缓存和是否修改报文，缓存代理保存缓存，透明代理不做加工。</p>
+<p>网关可以将HTTP请求转化为其他通信协议，提高安全。</p>
+<p>隧道不会解析HTTP请求，保持原样。</p>
+<p>缓存服务器有缓存有效期，到期会请求新资源。</p>
+<p>缓存可以存在浏览器，称为临时网络文件。</p>
+<h3 id="第六章-HTTP首部"><a href="#第六章-HTTP首部" class="headerlink" title="第六章 HTTP首部"></a>第六章 HTTP首部</h3><p>Content-Type表示对象类型，比如text/html</p>
+<p>首部字段分为通用，请求，响应，实体首部字段。最后针对报文实体部分使用的首部。</p>
+<p>Cache-Control，控制缓存行为，有public所有人都能cache，private只给那个人cache。</p>
+<p>no-cache防止从缓存中返回过期资源。可以指定位置，那个位置不要cache。</p>
+<p>no-store表示请求响应包含机密信息，不进行缓存。</p>
+<h3 id="第七章-HTTPS"><a href="#第七章-HTTPS" class="headerlink" title="第七章 HTTPS"></a>第七章 HTTPS</h3><p>http+加密+认证+完整性保护=https</p>
+<p>SSL层位于http层与tcp层中间，独立于HTTP，SMTP，Telnet都能用。</p>
+<p>通信过程：</p>
+<ol>
+<li>客户端发送client hello开始ssl，包含ssl版本，加密组件（加密算法密钥长度）列表。</li>
+<li>服务端发送server hello，包含ssl版本与加密组件列表。</li>
+<li>服务端发送certificate报文，有公钥整数。</li>
+<li>服务端发送server hello done，握手协商结束。</li>
+<li>客户端用client key exchange回应，包含随机密码串，用公开密钥加密。</li>
+<li>客户端发送change cipher spec报文，提示服务器，之后通信会用之前的随机串加密</li>
+<li>客户端发送finished，包含全部报文整体校验值，正确解密即成功。</li>
+<li>服务端发送change cipher spec。</li>
+<li>服务端发送finished。</li>
+<li>交换完毕后，开始http。</li>
+</ol>
+<p>应用层发送数据会带上报文摘要，保证完整性。</p>
+<p>敏感数据才使用https通信，需要节省开销，证书费用。</p>
+<h3 id="第八章-确认访问用户身份的认证"><a href="#第八章-确认访问用户身份的认证" class="headerlink" title="第八章 确认访问用户身份的认证"></a>第八章 确认访问用户身份的认证</h3><p>session管理与cookie应用</p>
+<ol>
+<li>将用户id，密码发给服务器。</li>
+<li>服务器发放sessionID，记录状态。</li>
+<li>客户发送带sessionID的cookie请求。</li>
+<li>验证SessionID判定对方是否为真实用户。</li>
+</ol>
+<h3 id="第九章-基于HTTP的功能追加协议"><a href="#第九章-基于HTTP的功能追加协议" class="headerlink" title="第九章 基于HTTP的功能追加协议"></a>第九章 基于HTTP的功能追加协议</h3><p>Ajax使用脚本进行通信，只更新局部页面。</p>
+<p>Comet会挂起响应，直到服务器更新。</p>
+<script>
+        document.querySelectorAll('.not-gallery-item')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div><div class="article-licensing box"><div class="licensing-title"><p>图解HTTP读书笔记</p><p><a href="https://exgod22356.github.com/Science/图解http读书笔记/">https://exgod22356.github.com/Science/图解http读书笔记/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>王钦砚</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-04-23</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%BC%80%E5%8F%91/">开发</a></div><div class="sharethis-inline-share-buttons"></div><script src="//platform-api.sharethis.com/js/sharethis.js#property=5ab6f60ace89f00013641890&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Science/ucore-lab-1/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">uCore lab 1</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Romance/%E6%9E%AA%E7%82%AE-%E7%97%85%E8%8F%8C%E4%B8%8E%E9%92%A2%E9%93%81%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="level-item">枪炮 病菌与钢铁读书笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/gallery/endo_yurika.jpg" alt="王钦砚"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">王钦砚</p><p class="is-size-6 is-block">Web Developer</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">42</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">27</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#第一章-Web与网路基础"><span class="level-left"><span class="level-item">1</span><span class="level-item">第一章 Web与网路基础</span></span></a></li><li><a class="level is-mobile" href="#第二章-简单HTTP协议"><span class="level-left"><span class="level-item">2</span><span class="level-item">第二章 简单HTTP协议</span></span></a></li><li><a class="level is-mobile" href="#第三章-HTTP报文里面的HTTP信息"><span class="level-left"><span class="level-item">3</span><span class="level-item">第三章 HTTP报文里面的HTTP信息</span></span></a></li><li><a class="level is-mobile" href="#第四章-状态码"><span class="level-left"><span class="level-item">4</span><span class="level-item">第四章 状态码</span></span></a></li><li><a class="level is-mobile" href="#第五章-与HTTP协作的Web服务器"><span class="level-left"><span class="level-item">5</span><span class="level-item">第五章 与HTTP协作的Web服务器</span></span></a></li><li><a class="level is-mobile" href="#第六章-HTTP首部"><span class="level-left"><span class="level-item">6</span><span class="level-item">第六章 HTTP首部</span></span></a></li><li><a class="level is-mobile" href="#第七章-HTTPS"><span class="level-left"><span class="level-item">7</span><span class="level-item">第七章 HTTPS</span></span></a></li><li><a class="level is-mobile" href="#第八章-确认访问用户身份的认证"><span class="level-left"><span class="level-item">8</span><span class="level-item">第八章 确认访问用户身份的认证</span></span></a></li><li><a class="level is-mobile" href="#第九章-基于HTTP的功能追加协议"><span class="level-left"><span class="level-item">9</span><span class="level-item">第九章 基于HTTP的功能追加协议</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ego/"><span class="level-start"><span class="level-item">Ego</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Gaman/"><span class="level-start"><span class="level-item">Gaman</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Romance/"><span class="level-start"><span class="level-item">Romance</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/categories/Science/"><span class="level-start"><span class="level-item">Science</span></span><span class="level-end"><span class="level-item tag">32</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ACM/"><span class="tag">ACM</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C-Primer/"><span class="tag">C++Primer</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GO/"><span class="tag">GO</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Gaman/"><span class="tag">Gaman</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Introduction/"><span class="tag">Introduction</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%81%9A%E9%A2%98%E5%AE%B6/"><span class="tag">做题家</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9F%BA%E7%A1%80/"><span class="tag">基础</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/"><span class="tag">安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/"><span class="tag">容器化</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><span class="tag">操作系统</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A8%A1%E6%9D%BF/"><span class="tag">模板</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E7%BC%96/"><span class="tag">汇编</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tag">编程</span><span class="tag">19</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"><span class="tag">编译原理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/"><span class="tag">网络</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%97%E5%8F%A5/"><span class="tag">诗句</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="tag">读书笔记</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E7%BC%96%E7%A8%8B/"><span class="tag">面向面试编程</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a><p class="is-size-7"><span>&copy; 2021 王钦砚</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><div id="outdated"><h6>Your browser is out-of-date!</h6><p>Update your browser to view this website correctly.&amp;npsb;<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p><p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p></div><script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script><script>window.addEventListener("load", function () {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'object-fit' // display on IE11 or below
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script><!-- hexo injector body_end start -->
+    <script>
+    (() => {
+        function switchTab() {
+            if (!location.hash) {
+              return;
+            }
+            Array
+                .from(document.querySelectorAll('.tab-content'))
+                .forEach($tab => {
+                    $tab.classList.add('is-hidden');
+                });
+            Array
+                .from(document.querySelectorAll('.tabs li'))
+                .forEach($tab => {
+                    $tab.classList.remove('is-active');
+                });
+            const $activeTab = document.querySelector(location.hash);
+            if ($activeTab) {
+                $activeTab.classList.remove('is-hidden');
+            }
+            const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+            if ($tabMenu) {
+                $tabMenu.parentElement.classList.add('is-active');
+            }
+        }
+        switchTab();
+        window.addEventListener('hashchange', switchTab, false);
+    })();
+    </script>
+    <!-- hexo injector body_end end --></body></html>

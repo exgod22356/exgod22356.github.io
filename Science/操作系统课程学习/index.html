@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>操作系统课程学习 - Icarus</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#f7f7f7"><meta name="application-name" content="Icaurs - Hexo Theme"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#f7f7f7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Icaurs - Hexo Theme"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要是操作系统的一些学习笔记。"><meta property="og:type" content="blog"><meta property="og:title" content="操作系统课程学习"><meta property="og:url" content="https://exgod22356.github.com/Science/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/"><meta property="og:site_name" content="Icarus"><meta property="og:description" content="本文主要是操作系统的一些学习笔记。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://exgod22356.github.com/img/og_image.png"><meta property="article:published_time" content="2021-03-16T11:10:30.000Z"><meta property="article:author" content="王钦砚"><meta property="article:tag" content="开发"><meta property="article:tag" content="操作系统"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://exgod22356.github.com/Science/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/"},"headline":"Icarus","image":["https://exgod22356.github.com/img/og_image.png"],"datePublished":"2021-03-16T11:10:30.000Z","author":{"@type":"Person","name":"王钦砚"},"description":"本文主要是操作系统的一些学习笔记。"}</script><link rel="canonical" href="https://exgod22356.github.com/Science/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css"><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Gitter" href="https://gitter.im/"><i class="fab fa-gitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-03-16T11:10:30.000Z" title="2021-03-16T11:10:30.000Z">2021-03-16</time></span><span class="level-item"><a class="link-muted" href="/categories/Science/">Science</a></span><span class="level-item">41 minutes read (About 6157 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">操作系统课程学习</h1><div class="content"><p>本文主要是操作系统的一些学习笔记。   </p>
+<a id="more"></a>   
+<h3 id="第一章-操作系统概述"><a href="#第一章-操作系统概述" class="headerlink" title="第一章 操作系统概述"></a>第一章 操作系统概述</h3><p>操作系统是控制软件，管理应用程序，限制软件资源，杀死应用程序。</p>
+<p>资源管理，外设管理，资源分配。</p>
+<p>层次在硬件之上，应用程序之下。</p>
+<p>组件包括：CPU调度，物理内存管理，虚拟内存管理，文件系统管理，中断处理和设备驱动。</p>
+<p>Kernel特征：</p>
+<ul>
+<li>并发：一段时间内多个程序运行。 并行：一个时间点运行多个程序。</li>
+<li>共享资源，给不同的应用程序。同时访问，互斥共享。</li>
+<li>虚拟：多道程序设计技术，每个用户都觉得计算机专门服务。</li>
+<li>异步：程序执行走走停停，但运行环境相同，OS保证运行结果相同。</li>
+</ul>
+<p>微内核：只把最基础服务放入内核，其他服务放入用户态。</p>
+<p>外核：由应用程序而不是操作系统管理硬件资源。</p>
+<p>VMM：虚拟机监视器，跑在传统OS之下，虚拟出整个计算机，包含各种外设。因硬件资源过剩而诞生。</p>
+<h3 id="第二章-操作系统基础操作"><a href="#第二章-操作系统基础操作" class="headerlink" title="第二章 操作系统基础操作"></a>第二章 操作系统基础操作</h3><p><strong>启动</strong></p>
+<p>DISK存放OS。</p>
+<p>BIOS基本IO系统，让计算机启动后检测各种外设。检测完成后才能完成加载响应软件。</p>
+<p>Bootloader：加载OS。</p>
+<p>BIOS加典后从特定地址（x86 CS:IP = 0xf000:fff0 CS段寄存器 IP指令寄存器）加载bootloader。</p>
+<p>BIOS加电后先POST加电自检，寻找显卡和执行BIOS。</p>
+<p>然后从硬盘上加载Bootloader，在硬盘第一个引导扇区512KB。主要功能把OS从硬盘加载到内存。</p>
+<p>x86上，将bootloader从引导扇区加载到0x7c00。CPU控制权交给bootloader。</p>
+<p>bootloader：找到硬盘扇区，了解os长度，加载到内存。完成后跳到os起始地址，控制权交给os。</p>
+<p><strong>中断 异常 系统调用</strong></p>
+<p>操作系统：系统调用，异常，中断。</p>
+<p>系统调用：主动向操作系统发出服务请求。</p>
+<p>异常：非法指令或者坏的处理状态。</p>
+<p>中断：来自外设，计时器或网络的中断。</p>
+<p>内核是被信任的第三方，只有OS可以执行特权指令。</p>
+<p>三者源头不同，处理时间不同。</p>
+<p>中断异步，异常同步，系统调用异步或者同步。</p>
+<p>响应：中断对应用程序不可见，异常会杀死应用程序或者重新执行。系统调用会等待和持续。</p>
+<p>首先要知道中断或者异常是谁产生的。收到中断后查找中断表，保留现场，转到目标地址。</p>
+<p>硬件需要设置各种事件中断标记，提供中断ID。</p>
+<p>软件需要保存处理现场，处理中断服务，清除中断标记，重新执行服务。</p>
+<p>异常也有异常编号，然后处理异常（杀死或重新执行），然后恢复现场。</p>
+<p>系统调用：程序访问高层次API而非系统调用。如WIN32-API POSIX-API Java-API（非系统调用，而是JVM）。</p>
+<p>系统调用需要维护序号，建立索引，系统调用接口进行调用，返回系统调用的状态以及其他返回值。用户不需要知道系统调用如何实现。</p>
+<p>用户态：特权级低，无法访问特殊指令。内核态：可以执行任何指令。</p>
+<p>应用程序和操作系统存在各自的堆栈，有转换的开销。</p>
+<p>内核核心转换的开销：找到中断/异常/系统调用，并初始化开销。建立堆栈开销。验证参数的开销，内核态映射到用户态的地址空间的开销，需要更新页面映射权限。内核态有着自己独立的地址空间。内存拷贝存在开销。</p>
+<h3 id="第三章-连续内存分配"><a href="#第三章-连续内存分配" class="headerlink" title="第三章 连续内存分配"></a>第三章 连续内存分配</h3><p><strong>层次</strong></p>
+<p>计算机主要结构有CPU 内存 外设。</p>
+<p>内存有层次结构，操作系统无法更改L1 L2这些CPU的cache。</p>
+<p>管理目标：</p>
+<ul>
+<li><p>抽象：不用考虑物理内存，置用逻辑地址空间。</p>
+</li>
+<li><p>保护：独立地址空间。</p>
+</li>
+<li><p>共享：访问相同内存。</p>
+</li>
+<li><p>虚拟化：有着更多的地址空间。</p>
+</li>
+</ul>
+<p>管理内存不同方法：程序重定位，分段，分页，虚拟内存，按需分页虚拟内存。</p>
+<p>操作系统依赖硬件，如MMU。</p>
+<p><strong>地址空间 地址生成</strong></p>
+<p>物理地址空间：硬件支持的地址空间。</p>
+<p>逻辑地址空间：一个运行的程序所拥有的内存范围。</p>
+<p>运行程序对程序而言地址仍然是逻辑地址。有映射关系。</p>
+<p>MMU用来表示映射关系。</p>
+<p>操作系统需要确保地址合法，找到界限寄存器，保证是否小于目标界限，否则产生异常。</p>
+<p><strong>连续内存分配</strong></p>
+<p>外碎片：分配单元之间无法使用的内存。</p>
+<p>内碎片：分配单元内无法使用的内存。</p>
+<p>fist fit/best fit/worst fit/</p>
+<p>压缩式碎片整理：调整位置，把程序挪到一些挨紧，开销大不大。</p>
+<p>交换式：把硬盘当作内存后备，抢占等待的程序并回收内存，交换到硬盘。</p>
+<h3 id="第四章-非连续内存分配"><a href="#第四章-非连续内存分配" class="headerlink" title="第四章 非连续内存分配"></a>第四章 非连续内存分配</h3><p>分段，分页，页表。</p>
+<p>非连续分配优点：物理地址空间非连续，更好的内存利用和管理，允许共享代码和数据，允许动态加载动态链接。</p>
+<p>缺点：开销大，软件或硬件转换虚拟地址-物理地址。</p>
+<p>硬件方法：分段分页。</p>
+<p><strong>分段</strong></p>
+<p>分离和共享，将不同的段分散到不同的物理地址空间，如堆，栈，数据，text段。</p>
+<p>分段寻址方案：访问内存需要段号和段内偏移，这俩可以放在两个寄存器，也可以放在单一地方。</p>
+<p>段有段表，由操作系统建立，存逻辑段号和物理段号映射。</p>
+<p>先检测Limit，再加上偏移形成物理地址。</p>
+<p><strong>分页</strong></p>
+<p>段尺寸可变，页大小不变。页划分物理内存到固定的大小，2的幂。frame表示物理，page表示逻辑。</p>
+<p>MMU和TLB转换逻辑地址到物理地址。</p>
+<p>帧包含帧号（f 有2eF个帧）和帧内偏移（S位）（f,o) ，得出物理地址2eS×f + o。</p>
+<p>页与帧计算类似，但页号和帧号大小不一定对应。</p>
+<p><strong>页表</strong></p>
+<p>大数组。先查询flag，访问不存在的页时候会缺页异常，否则查到页号对应帧号。</p>
+<p>存在问题，访问一个内存单元需要两次内存访问。页表可能非常大。</p>
+<p>解决方法：缓存。间接访问，多级页表。</p>
+<p>TLB：缓存近期访问的页帧转换表项。快表，在CPU中。页表存在内存中，会慢。</p>
+<p>多级页表，对大地址寻址可以变成多级寻址。使得某一些不存在关系的数据不需要占用内存。</p>
+<p>大地址空间问题：映射变得繁琐，让页表与物理地址空间相对应，而非逻辑地址空间大小相对应。</p>
+<p>页寄存器：根据物理帧号对应页号。空间小，但双对应关系要更新。</p>
+<p>可以使用关联存储，但关联存储硬件成本大。难以在单个时钟周期内完成。耗电。</p>
+<p>可以使用哈希计算，可以硬件加速。查找时候可能碰撞，还需要类似TLB加速。</p>
+<h3 id="第五章-虚拟内存"><a href="#第五章-虚拟内存" class="headerlink" title="第五章 虚拟内存"></a>第五章 虚拟内存</h3><p><strong>起因</strong></p>
+<p>更多的程序能跑在有限的内存内。软件增长速度比内存增长速度快。</p>
+<p>有手动的覆盖技术，自动的交换技术和自动的虚拟存储技术。</p>
+<p><strong>覆盖技术</strong></p>
+<p>在比较小的内存中运行比较大的程序。将程序根据逻辑分类，划分为必要部分和可选部分。必要不放呢常驻内存，可选部分必要时候才装入内存，不存在调用关系的模块不必要同时装入内存，因此相互覆盖，共用分区。</p>
+<p><strong>交换技术</strong></p>
+<p>将暂时不能运行的程序送到外存，获得空闲内存。</p>
+<p>需要考虑什么时候交换，只有不够且危险的时候交换。考虑交换区域的大小，能够够大。需要重定位，因此要动态地址映射。</p>
+<p><strong>虚存技术</strong></p>
+<p>目标：像覆盖技术一样，只把一部分放在内存中，从而运行比当前空闲内存还要大的程序。由操作系统自动完成。像交换技术一样，导出导入存储空间，获得更多空闲内存空间，但做得更好，只对进程部分进行交换。</p>
+<p>程序需要有局部性。样例（二维数组遍历，缺页率问题）。</p>
+<p>基本特征：</p>
+<ul>
+<li>空间大，通过硬盘补充。</li>
+<li>部分交换</li>
+<li>不连续性</li>
+</ul>
+<p>虚拟页式内存管理：将部分放入内存，如果不存在则发送缺页异常，从外存中调入内存。</p>
+<p>需要在虚拟页表表项增加表项，如驻留位（在内存还是外存），保护位（能否访问，如只读），修改位（该页是否被写过，那么和在硬盘中内存数据不一样），访问位（用于置换算法）。</p>
+<p>缺页中断：找空闲空间，如果没有则执行页面置换算法，选择页面，如果修改过则写入外存，没写过就抛弃，然后修改页表表项，之后将对应页写入到物理页面f中，修改驻留位，回到被中断的指令。</p>
+<p>如何保存未被映射的页：能够简单识别在二级存储器中的页，或者用交换空间，用于存储未被映射的页面。</p>
+<p>后备存储：虚拟地址空间页面可以被映射到一个文件某个位置，有代码段，动态链接段，其他段。</p>
+<p>性能评估：访存时间×页表命中几率+缺页处理时间×缺页几率。</p>
+<h3 id="第六章-页面置换算法"><a href="#第六章-页面置换算法" class="headerlink" title="第六章 页面置换算法"></a>第六章 页面置换算法</h3><p>功能：选择页面被置换。</p>
+<p>页面锁定：标志锁定位，不去管。</p>
+<p>最优页面置换：基本思路，计算在它下一次访问之前，还需要等待多少时间。用模拟器跑一遍来换。</p>
+<p>FIFO算法：驻留最长的页面淘汰。维护链表。性能较差，调出的可能是经常要访问的页面。会有belady现象</p>
+<p>Belady现象：使用FIFO时候，分配的物理页面增多，缺页率反而提高。算法没有考虑动态特征。</p>
+<p>LRU：最久未被使用。开销较大。</p>
+<p>Clock页面置换算法：LRU的近似，对FIFO的改进。环形链表，从最老的页面开始访问，如果访问位是0则置换，如果访问位是1则置为0，并且继续。</p>
+<p>二次机会法：脏页替换代价很大，需要修改clock算法，基于修改位和访问位，减少写回的次数。第一次把两个0的换回去，把01和10会变成00，第二次再换。</p>
+<p>最不常用算法：LFU，算频率淘汰。</p>
+<p>LRU算法符合栈算法特性，FIFO不符合，所以会有Belady算法。</p>
+<p>全局页面置换算法：根据不同的页面算法扩展页容量。</p>
+<p>工作集模型能用来表示局部性。</p>
+<p>工作集：当前正在使用的逻辑页面的集合，参数为时间和窗口长度。</p>
+<p>常驻集：进程实际驻留再内存中的页面集合。</p>
+<p>我们希望这两个集合尽量交叉。当常驻集大小达到某个数目，分配过多物理页面缺页率也不会明显下降。</p>
+<p>只要不属于工作集替换算法，就不保留，即使不缺页。</p>
+<p>根据缺页率动态调整页缺失。</p>
+<p>OS需要选择合适的常驻集，来防止抖动。</p>
+<h3 id="第七章-进程管理"><a href="#第七章-进程管理" class="headerlink" title="第七章 进程管理"></a>第七章 进程管理</h3><p>进程：一个具有一定独立功能的程序在一个数据集合上的一次动态执行的过程。</p>
+<p>进程组成：代码，数据，PC计数器，寄存器，堆栈，系统资源如打开的文件。</p>
+<p>程序是产生进程的基础，程序可以多次运行，进程是程序功能的体现，一个程序可对应多个进程，通过调用一个进程也可以包括多个程序。</p>
+<p>进程有核心态和用户态区别。</p>
+<p>进程可动态创建，结束，可以并发，独立性，制约性（资源抢占）</p>
+<p>进程控制块：管理控制进程所用的信息集合。包含进程标识信息（本进程标识，产生者标识，用户标识），处理机状态信息保存区（保存进程运行现场，包括数据，地址，PC，状态，栈指针），进程控制信息（调度和状态信息，进程间通信信息，存储管理信息，进程所用资源，有关数据结构链接信息。）</p>
+<p>控制块一般用链表来组织，可以动态删除动态创建。</p>
+<p>进程状态：进程创建，进程运行，进程等待，进程唤醒，进程结束。</p>
+<p>创建：系统初始化时候，用户请求创建新进程，正在运行的进程执行了创建进程的系统调用。</p>
+<p>进程运行：让操作系统选择就绪进程，需要调度。</p>
+<p>进程等待（阻塞）：系统服务无法马上完成，操作无法马上完成，需要的数据没有到达。进程只能自己阻塞自己，因为只有自己才知道合适需要等待事件发生。</p>
+<p>进程唤醒：被阻塞进程资源可满足，等待事件到达，PCB被加入就绪队列。进程只能被OS或其他进程唤醒。</p>
+<p>进程结束：正常，错误，致命错误（强制），被其他进程所杀（强制）。</p>
+<p>基本状态：运行，就绪，等待。阻塞在事件发生能变到就绪，就绪在被调度能到运行，运行在时间调度后转到就绪，运行在缺少资源后阻塞。</p>
+<p>进程不占内存空间 称为进程挂起</p>
+<p>挂起:<br>阻塞挂起状态 -等待事件出现</p>
+<p>就绪挂起-只要进入内存，就能运行</p>
+<p>阻塞到阻塞挂起:请求更多内存资源时候，会进行这种转换  </p>
+<p>就绪到就绪挂起:高优先级阻塞进程和低优先级就绪进程，会挂起低优先级就绪进程  </p>
+<p>运行到运行挂起:高优先级进程因为事件出现而进入就绪挂起，可能转到挂起状态</p>
+<p>阻塞挂起可能转换为就绪挂起，但全在外存上，仅仅变了状态</p>
+<p>就绪挂起到就绪:没有就绪进程或者挂起进程优先级高于就绪进程</p>
+<p>阻塞挂起到阻塞:当一个进程释放足够内存，会把高优先级阻塞挂起进程放进内存</p>
+<p>操作系统需要维护一组队列，来表示系统当中所有进程的当前状态</p>
+<p>不同状态用不同队列管理 就绪队列 挂起队列</p>
+<p>状态变化之后，从队列出来放进另一个队列</p>
+<p>线程 独立运行的基本单位 并发执行并且共享地址空间</p>
+<p>进程执行功能交给线程管理</p>
+<p>一个线程崩溃，所有线程崩溃。</p>
+<p>进程创建需要一些管理信息，进程可以直接重用</p>
+<p>属于同一进程的线程有着一样的地址空间，切换线程很快，不需要切换页表。</p>
+<p>同一进程共享资源，不需要通过内核通信。</p>
+<p>用户线程:操作系统看不到的线程，由用户线程库来管理</p>
+<p>内核线程:操作系统看得到，由操作系统管理</p>
+<p>用户线程:在库中实现线程控制块，不依赖内核，由函数完成创建 终止 同步 调度 操作系统无法管理。有自定义算法，不需要用户态核心态转换</p>
+<p>缺点:如果一个线程发起系统调用，整个进程都会等待。除非主动交出CPU使用权，否则其他线程无法运行。多线程时间片分得少。</p>
+<p>内核线程:有操作系统完成内核创建，终止和实现，由内核维护进程和线程上下文，如windows。切换开销大。</p>
+<p>轻量级进程:</p>
+<p>内核支持的用户线程，一个进程可以有一个或者多个轻量级进程。</p>
+<p>上下文切换:CPU状态，寄存器，栈指针等寄存器</p>
+<p>fork之后返回俩返回值，exec加载程序取代当前进程，堆栈都会覆盖</p>
+<p>fork开销高，exec后开销更高，因为fork需要拷贝内存信息，子进程可能关闭打开的文件和连接。</p>
+<p>可以用vfork。也可以通过虚存管理COW，来实现。并不真实复制。</p>
+<p>wait等待子进程结束，当子进程exit时候wait等待。当exit虽然无法在用户空间执行，父进程wait帮助释放子进程。</p>
+<p>进程结束后调用exit，将结果作为参数，关闭所有文件，连接，释放内存，释放大部分操作系统结构，检查父进程是否存活(如果是，则进入僵尸状态，会保留结果。如果不是，则释放所有，进程死亡)</p>
+<p>进程终止是最终的垃圾收集。</p>
+<h3 id="第八章-cpu调度"><a href="#第八章-cpu调度" class="headerlink" title="第八章 cpu调度"></a>第八章 cpu调度</h3><p>选择进程，调度程序，什么时候调度。</p>
+<p>调度条件:运行切换到等待，或者被终结</p>
+<p>不可抢占:必须等待事件结束</p>
+<p>可抢占:调度程序在中断被响应后执行，从运行切换到就绪，从等待切换到就绪，可以被换出。 </p>
+<p>执行模型：程序在CPU突发和IO中交替，CPU繁忙还是IO繁忙。CPU占用率波动。</p>
+<p>调度算法：CPU占用率（CPU忙的时间比），吞吐量（单位时间完成的进程熟练），周转时间（一个进程从初始化到结束，包括等待时间的所有时间，等待时间（就绪队列中的总时间），响应时间（响应花费的总时间）</p>
+<p>更快：高带宽，低延迟。</p>
+<p>减少响应时间（输出尽快提供），减少平均响应时间波动（可预测性更重要），增加吞吐量（开销减少，系统资源高效利用），减少等待时间。</p>
+<p>低延迟增加交互，高吞吐量保证效率。</p>
+<p>FCFS先来先服务。简单，但时间波动较大，花费时间少的任务可能排在花费时间长的前面，IO和CPU之间可能重叠。</p>
+<p>短任务优先：不可抢占（短任务到来之后不管，塞最前面），抢占（短任务来的时候调度）。</p>
+<p>有最优平均等待时间，连续短任务可能会让长任务饥饿，短任务可用时候任何长任务CPU时间会增加平均等待时间。需要知道进程的执行时间，需要预知未来。</p>
+<p>可以用公式预估进程执行时间。</p>
+<p>最高相应比优先：考虑等待时间，防止无限期延迟。</p>
+<p>轮询：让进程轮流占CPU，设置时间片。时间片设置困难，经验：维持上下文切换开销处于1%。</p>
+<p>多级队列，不同队列用不同调度算法。前台轮询，后台FCFS之类的。</p>
+<p>多级反馈队列，时间片随优先级别增加而增加，如果没有完成则降低优先级。IO密集型会很快执行，CPU密集型则优先级下降很快。</p>
+<p>公平共享服务FFS：一些用户组比其他用户更重要，保证不重复的组无法垄断资源。</p>
+<p>实时调度（面向实时系统），正确性依赖于时间和功能的OS。</p>
+<p>强实时系统（必须完成），弱实时系统（尽量完成）。</p>
+<p>多处理器调度：需要负载均衡。</p>
+<p>优先级反转：环境强制高优先级</p>
+<h3 id="第九章-同步"><a href="#第九章-同步" class="headerlink" title="第九章 同步"></a>第九章 同步</h3><p>进程相对独立，则执行十确定的。不独立且不可重现，意味着bug可能间歇性发生。</p>
+<p>临界区：访问共享资源的代码称为临界区。</p>
+<p>互斥：没有多个资源访问临界区域。</p>
+<p>死锁：都无法进行下去</p>
+<p>饥饿：无限等待</p>
+<p>进入临界区aquire锁，离开临界区release。</p>
+<p>进入临界区禁用中断，离开临界区开启中断。但外部事件可能无法及时响应。临界区执行长短也无法确定。</p>
+<p>基于软件：进入临界区</p>
+<p>当硬件可以用原子操作，可以抽象硬件。</p>
+<p>test and set：读取值，测试值是否为1，返回值且设置为1。</p>
+<p>交换：交换两个内存里的值。</p>
+<p>上述2个机器指令不允许被打断。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//忙等待</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">acquire</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">while</span>(test_and_set(value)){</span><br><span class="line">    spin();</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">release</span><span class="params">()</span></span>{</span><br><span class="line">    value = <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>无忙等待：spin时候加入队列，release时候取出队列。</p>
+<h3 id="第十章-信号量与管程"><a href="#第十章-信号量与管程" class="headerlink" title="第十章 信号量与管程"></a>第十章 信号量与管程</h3><p>信号量：p(): sem-1 除非sem&lt;0 v(): sem+1 如果sem&lt;=0则唤醒一个p。</p>
+<p>信号量是整数，被保护（只能被p，v操作），p能阻塞，v不会。信号量是公平的。</p>
+<p>有二进制信号量和整数信号量，给定一个可以实现另一个。</p>
+<p>信号量可以实现同步，线程的执行需要另一个线程提供的结果，初始化为0，实现调度约束。</p>
+<p>生产消费者模型：任何时间只能有一个线程操作缓冲区，缓冲区为空，消费者必须等待生产者。缓冲区满，生产者必须等待消费者。</p>
+<p>每个约束都需要单独的信号量。</p>
+<script>
+        document.querySelectorAll('.not-gallery-item')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div><div class="article-licensing box"><div class="licensing-title"><p>操作系统课程学习</p><p><a href="https://exgod22356.github.com/Science/操作系统课程学习/">https://exgod22356.github.com/Science/操作系统课程学习/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>王钦砚</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-03-16</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E5%BC%80%E5%8F%91/">开发</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="sharethis-inline-share-buttons"></div><script src="//platform-api.sharethis.com/js/sharethis.js#property=5ab6f60ace89f00013641890&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Romance/%E6%9E%AA%E7%82%AE-%E7%97%85%E8%8F%8C%E4%B8%8E%E9%92%A2%E9%93%81%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">枪炮 病菌与钢铁读书笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Science/c-primer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="level-item">C++ Primer学习笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/gallery/endo_yurika.jpg" alt="王钦砚"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">王钦砚</p><p class="is-size-6 is-block">Web Developer</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">42</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">27</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#第一章-操作系统概述"><span class="level-left"><span class="level-item">1</span><span class="level-item">第一章 操作系统概述</span></span></a></li><li><a class="level is-mobile" href="#第二章-操作系统基础操作"><span class="level-left"><span class="level-item">2</span><span class="level-item">第二章 操作系统基础操作</span></span></a></li><li><a class="level is-mobile" href="#第三章-连续内存分配"><span class="level-left"><span class="level-item">3</span><span class="level-item">第三章 连续内存分配</span></span></a></li><li><a class="level is-mobile" href="#第四章-非连续内存分配"><span class="level-left"><span class="level-item">4</span><span class="level-item">第四章 非连续内存分配</span></span></a></li><li><a class="level is-mobile" href="#第五章-虚拟内存"><span class="level-left"><span class="level-item">5</span><span class="level-item">第五章 虚拟内存</span></span></a></li><li><a class="level is-mobile" href="#第六章-页面置换算法"><span class="level-left"><span class="level-item">6</span><span class="level-item">第六章 页面置换算法</span></span></a></li><li><a class="level is-mobile" href="#第七章-进程管理"><span class="level-left"><span class="level-item">7</span><span class="level-item">第七章 进程管理</span></span></a></li><li><a class="level is-mobile" href="#第八章-cpu调度"><span class="level-left"><span class="level-item">8</span><span class="level-item">第八章 cpu调度</span></span></a></li><li><a class="level is-mobile" href="#第九章-同步"><span class="level-left"><span class="level-item">9</span><span class="level-item">第九章 同步</span></span></a></li><li><a class="level is-mobile" href="#第十章-信号量与管程"><span class="level-left"><span class="level-item">10</span><span class="level-item">第十章 信号量与管程</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ego/"><span class="level-start"><span class="level-item">Ego</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Gaman/"><span class="level-start"><span class="level-item">Gaman</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Romance/"><span class="level-start"><span class="level-item">Romance</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/categories/Science/"><span class="level-start"><span class="level-item">Science</span></span><span class="level-end"><span class="level-item tag">32</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ACM/"><span class="tag">ACM</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C-Primer/"><span class="tag">C++Primer</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GO/"><span class="tag">GO</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Gaman/"><span class="tag">Gaman</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Introduction/"><span class="tag">Introduction</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%81%9A%E9%A2%98%E5%AE%B6/"><span class="tag">做题家</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9F%BA%E7%A1%80/"><span class="tag">基础</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/"><span class="tag">安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/"><span class="tag">容器化</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><span class="tag">操作系统</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A8%A1%E6%9D%BF/"><span class="tag">模板</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E7%BC%96/"><span class="tag">汇编</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tag">编程</span><span class="tag">19</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"><span class="tag">编译原理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/"><span class="tag">网络</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%97%E5%8F%A5/"><span class="tag">诗句</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="tag">读书笔记</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E7%BC%96%E7%A8%8B/"><span class="tag">面向面试编程</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a><p class="is-size-7"><span>&copy; 2021 王钦砚</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><div id="outdated"><h6>Your browser is out-of-date!</h6><p>Update your browser to view this website correctly.&amp;npsb;<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p><p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p></div><script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script><script>window.addEventListener("load", function () {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'object-fit' // display on IE11 or below
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script><!-- hexo injector body_end start -->
+    <script>
+    (() => {
+        function switchTab() {
+            if (!location.hash) {
+              return;
+            }
+            Array
+                .from(document.querySelectorAll('.tab-content'))
+                .forEach($tab => {
+                    $tab.classList.add('is-hidden');
+                });
+            Array
+                .from(document.querySelectorAll('.tabs li'))
+                .forEach($tab => {
+                    $tab.classList.remove('is-active');
+                });
+            const $activeTab = document.querySelector(location.hash);
+            if ($activeTab) {
+                $activeTab.classList.remove('is-hidden');
+            }
+            const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+            if ($tabMenu) {
+                $tabMenu.parentElement.classList.add('is-active');
+            }
+        }
+        switchTab();
+        window.addEventListener('hashchange', switchTab, false);
+    })();
+    </script>
+    <!-- hexo injector body_end end --></body></html>

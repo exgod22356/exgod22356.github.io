@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>C++ Primer学习笔记 - Icarus</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#f7f7f7"><meta name="application-name" content="Icaurs - Hexo Theme"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#f7f7f7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Icaurs - Hexo Theme"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文主要是读C++ Primer，记录一些没关注到的细节，或者没学到的东西。"><meta property="og:type" content="blog"><meta property="og:title" content="C++ Primer学习笔记"><meta property="og:url" content="https://exgod22356.github.com/Science/c-primer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="Icarus"><meta property="og:description" content="本文主要是读C++ Primer，记录一些没关注到的细节，或者没学到的东西。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://exgod22356.github.com/img/og_image.png"><meta property="article:published_time" content="2021-03-08T11:10:30.000Z"><meta property="article:author" content="王钦砚"><meta property="article:tag" content="C++"><meta property="article:tag" content="开发"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://exgod22356.github.com/Science/c-primer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"},"headline":"Icarus","image":["https://exgod22356.github.com/img/og_image.png"],"datePublished":"2021-03-08T11:10:30.000Z","author":{"@type":"Person","name":"王钦砚"},"description":"本文主要是读C++ Primer，记录一些没关注到的细节，或者没学到的东西。"}</script><link rel="canonical" href="https://exgod22356.github.com/Science/c-primer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css"><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Gitter" href="https://gitter.im/"><i class="fab fa-gitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-03-08T11:10:30.000Z" title="2021-03-08T11:10:30.000Z">2021-03-08</time></span><span class="level-item"><a class="link-muted" href="/categories/Science/">Science</a></span><span class="level-item">20 minutes read (About 3023 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">C++ Primer学习笔记</h1><div class="content"><p>本文主要是读C++ Primer，记录一些没关注到的细节，或者没学到的东西。   </p>
+<a id="more"></a>   
+<h3 id="第一章-开始"><a href="#第一章-开始" class="headerlink" title="第一章 开始"></a>第一章 开始</h3><p>除了cin cout，还有cerr输出警告和错误信息，clog输出运行时一般性信息。</p>
+<p><code>endl</code>结束当前行，将与设备关联的缓冲区刷到设备中。保证到目前为止所产生的所有输出都写入到输出流中，而不是停留在内存中等待写入流。</p>
+<blockquote>
+<p>拓展：缓冲区又称为缓存，内存空间的一部分。在内存空间中预留了一定的存储空间缓冲输入或输出。CPU可以直接读取内存而不是从磁盘 中读，减少磁盘读写次数，提高运行速度。</p>
+<p>全缓冲：标准IO缓存满之后才实际进行IO操作；</p>
+<p>行缓冲：遇到换行符才之际IO操作；</p>
+<p>不缓冲：如stderr。 </p>
+<p>可以使用flush endl ends来刷新缓冲区。</p>
+</blockquote>
+<h3 id="第二章-变量与基本类型"><a href="#第二章-变量与基本类型" class="headerlink" title="第二章 变量与基本类型"></a>第二章 变量与基本类型</h3><p><code>char</code>是否带符号由编译器决定。其他字符类型可以用扩展字符集，如<code>wchar_t</code>,<code>char16_t</code>,<code>char32_t</code>。其中<code>wchar_t</code>可以确保存放最大扩展字符集的任意一个字符，16和32则为unicode服务。</p>
+<p>初始化和赋值是完全不同的操作。初始化是赋予初始值，赋值则是先擦除在用新值替代。 </p>
+<p><strong>列表初始化</strong>：用花括号初始化，如下：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> a = {<span class="number">0</span>};</span><br><span class="line"><span class="keyword">int</span> a{<span class="number">0</span>};</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">a</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>如果初始值可能丢失信息，则用列表初始化时候编译器会报错。</p>
+<p><strong>默认初始化</strong>：对于函数体内部的内置类型变量不被初始化，函数外的变量初始化为0。每个类各自决定初始化的方式。</p>
+<p>c++支持分离式编译，因此定义和声明需要区别开来。声明使得名字为程序所知道，定义创建与名字关联的实体。</p>
+<p>如果想声明而非定义，则用<code>extern</code>并且不显式初始化。变量只能被定义一次，但可以被多次声明。</p>
+<p>建议：在第一次使用变量前定义它。这样方便好找。</p>
+<p>引用创建了对象的别名，定义时候会和初始值绑定在一起，无法重新绑定到另一个对象。</p>
+<p>所有指针都应该初始化，而且应当在定义了对象之后再定义指向它的指针。</p>
+<p><code>void*</code>指针可以存放任意对象的地址，但不能操作。可以进行函数的比较，或者赋值给另一个<code>void*</code>。也可以强转类型后操作。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p1, p2;<span class="comment">//只有p1是int*类型 p2是int</span></span><br><span class="line"><span class="keyword">int</span> *p1, *p2；<span class="comment">//正确</span></span><br></pre></td></tr></tbody></table></figure>
+<p>默认状态下，const对象只在文件内生效。如果需要共享，则extern const来使用。</p>
+<p>无法通过const引用来改变值，但可以通过其他引用改变值。</p>
+<p>引用类型必须与所引用对象类型一致，除非是字面值。</p>
+<p>const在前，是指向常量的指针。const在后，是常量指针。前者无法通过该指针改变变量值，后者无法改变指针的指向，也就是地址不变。</p>
+<p>constexpr常量表达式指可以在编译过程中得到计算结果的表达式。函数体外定义的变量地址不变，能用来初始化constexpr指针。这时候相当于地址不变的常量指针。</p>
+<p>可以用typedef和using来声明类型别名。</p>
+<p>auto通常会忽略顶层const（通道）保留底层const。需要顶层的话则要显式声明。</p>
+<p>引用用auto也需要显式声明。</p>
+<p>decltype可以用来推断类型，而不计算值。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">decltype</span>(*p) <span class="comment">//int&amp;</span></span><br><span class="line"><span class="keyword">decltype</span>((<span class="number">5</span>))<span class="comment">//int</span></span><br><span class="line"><span class="keyword">decltype</span>(a)<span class="comment">//int</span></span><br><span class="line"><span class="keyword">decltype</span>((a))<span class="comment">//int&amp; 双层括号里面放变量 只能是引用</span></span><br></pre></td></tr></tbody></table></figure>
+<p>decltype在加括号和不加括号时候类型不同。</p>
+<h3 id="第三章-字符串-向量和数组"><a href="#第三章-字符串-向量和数组" class="headerlink" title="第三章 字符串 向量和数组"></a>第三章 字符串 向量和数组</h3><p>每个函数，变量名字都需要独立的using声明。头文件不应该包含using声明，避免冲突。</p>
+<p>用等号执行的拷贝初始化，不用等号执行的直接初始化。</p>
+<p>触发getline函数的换行符被丢弃掉了，得到的string不含换行符。</p>
+<p>在cctype里面有各种处理字符的函数，比如<code>ispunct(c)</code>检测标点符号。</p>
+<p>列表初始化只能花括号，不能圆括号。</p>
+<p>vector运行时应当能高效快速添加元素，因此设定大小没什么必要。</p>
+<p>只能对已经存在的元素执行下标操作。</p>
+<p>只需要读的话，可以用<code>cbegin()</code>常量迭代器。</p>
+<p>可以用箭头运算符和<code>empty()</code>来检测是否为空。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(*it).empty();</span><br><span class="line">it-&gt;empty();</span><br></pre></td></tr></tbody></table></figure>
+<p>对容量的操作会导致迭代器失效。</p>
+<p>除了方法，还可以用<code>begin()</code>,<code>end()</code>函数。得到尾后指针（指向并不存在的元素，位于容器尾元素的下一位置），可以以数组为参数。</p>
+<p>两个指针相减得到<code>ptrdiff_t</code>类型，和<code>size_t</code>类似，但可能有负数。</p>
+<h3 id="第四章-表达式"><a href="#第四章-表达式" class="headerlink" title="第四章 表达式"></a>第四章 表达式</h3><p>除非比较对象是布尔类型，否则不要用<code>true</code>，<code>false</code>来进行比较。</p>
+<p>字面值是右值，算数表达式是右值。</p>
+<p>除非必须，否则不要用递增递减运算符的后置版本，由于需要保存原始值，因此产生不必要浪费。</p>
+<p><code>sizeof</code>存在两种形式，求类型的大小和求表达式结果的类型大小。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sizeof</span> expr;</span><br><span class="line"><span class="keyword">sizeof</span> (type);</span><br></pre></td></tr></tbody></table></figure>
+<p>对数组求sizeof会得到整个数组所占空间的大小，对string或者vector则只返回固定部分大小。</p>
+<p>隐式转换：比int小的整型值提升到较大的整数类型，在条件中非布尔值转换为布尔类型，初始化时候转换成变量类型，右侧运算对象转换成左侧运算对象的类型。算数运算多种类型会转换成同种类型，函数调用会发生类型转换。</p>
+<p>命名的强制转换：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> j;</span><br><span class="line"><span class="keyword">void</span>* p;</span><br><span class="line"><span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(j);<span class="comment">//有明确定义的类型转换，主要不包含底层const，都能用static_cast。</span></span><br><span class="line"><span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>*&gt;(p);</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *pc;</span><br><span class="line"><span class="keyword">char</span> *p = <span class="keyword">const_cast</span>&lt;<span class="keyword">char</span>*&gt;(pc);<span class="comment">//const_cast只能改变运算对象的底层const，不能改变表达式类型</span></span><br><span class="line"><span class="keyword">int</span> *ip;</span><br><span class="line"><span class="keyword">reinterpret_cast</span>&lt;<span class="keyword">char</span>*&gt;(ip);<span class="comment">//位模式提供较低层次上的重新解释，依赖于机器</span></span><br><span class="line"><span class="keyword">dynamic_cast</span>;<span class="comment">//将基类指针或者引用安全地转换到派生类</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="第五章-语句"><a href="#第五章-语句" class="headerlink" title="第五章 语句"></a>第五章 语句</h3><p><code>throw</code>表达式：用throw标识遇到了无法处理的问题，raise了异常。</p>
+<p><code>try</code>语句块：用try处理异常，以<code>try</code>开始，一个或多个<code>catch</code>子句结束。抛出的异常会被catch处理。</p>
+<p>异常类：用于在throw表达式和catch子句之间传递异常的具体信息。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>{</span><br><span class="line">    statements;</span><br><span class="line">}<span class="keyword">catch</span>(runtime_error err){</span><br><span class="line">    handle;</span><br><span class="line">}<span class="keyword">catch</span>(exception-declaration){</span><br><span class="line">    handle;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>异常类：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">exception;<span class="comment">//常见问题</span></span><br><span class="line">runtime_error;<span class="comment">//只有运行时才能检测出来的问题</span></span><br><span class="line">range_error;<span class="comment">//运行时错误：结果超出了有意义的值域范围</span></span><br><span class="line">overflow_error;<span class="comment">//计算上溢出</span></span><br><span class="line">underflow_error;<span class="comment">//计算下溢出</span></span><br><span class="line">logic_error;<span class="comment">//逻辑错误</span></span><br><span class="line">domain_error;<span class="comment">//参数对应结果值不存在</span></span><br><span class="line">invalid_argument;<span class="comment">//无效参数</span></span><br><span class="line">length_error;<span class="comment">//超出长度</span></span><br><span class="line">out_of_range;<span class="comment">//逻辑错误 超出有效范围</span></span><br></pre></td></tr></tbody></table></figure>
+<p>异常类型有<code>what()</code>成员函数，返回c风格字符串，提供文本信息。</p>
+<h3 id="第六章-函数"><a href="#第六章-函数" class="headerlink" title="第六章 函数"></a>第六章 函数</h3><p>分离式编译：将.cpp文件编译成.o文件，然后将.o文件链接出可执行文件。如果需要更改，则针对更改了的文件编译一份.o文件再链接即可。</p>
+<p>可以用引用作为参数来返回所需要信息。</p>
+<p>尽量使用常引用。</p>
+<p>不允许拷贝数组，数组作为形参会转换为指针。但可以以数组的形式标识参数。</p>
+<p>argc标识数组中字符串的数量，argv表示c风格字符串数组。</p>
+<p>如果实参数量位置但是全部实参类型相同，可以使用initializer类型形参，如下所示:</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">teststring</span><span class="params">(<span class="built_in">initializer_list</span>&lt;<span class="built_in">string</span>&gt; li)</span></span>{</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">const</span> <span class="keyword">auto</span> &amp;i:li){</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="string">" "</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">string</span> s1 = <span class="string">"az"</span>;</span><br><span class="line">    teststring({s1,s1,s1});<span class="comment">//注意大括号</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>省略符形参以及使用:</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdarg&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testNum</span><span class="params">(<span class="keyword">int</span> count,<span class="keyword">int</span> beforeNumber,...)</span></span>{</span><br><span class="line">    va_list arg;</span><br><span class="line">    va_start(arg,beforeNumber);<span class="comment">//对齐到省略号前的参数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;count;i++){</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;va_arg(arg,<span class="keyword">int</span>)&lt;&lt;<span class="built_in">endl</span>;<span class="comment">//参数为va_list，参数类型</span></span><br><span class="line">    }</span><br><span class="line">    va_end(arg);<span class="comment">//释放va_list</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    testNum(<span class="number">5</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>不要返回局部对象的引用或者指针。</p>
+<p>返回值为左值的函数：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> &amp;<span class="title">getString</span><span class="params">(<span class="built_in">string</span>&amp; s, <span class="keyword">int</span> index)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> s[index];</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="built_in">string</span> s = <span class="string">"123456"</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    getString(s,<span class="number">3</span>) = <span class="string">'5'</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>注意参数不能为常量引用，返回值也不能为常量引用。</p>
+<p>return可以为大括号括起来的列表，注意返回值类型要能列表初始化。</p>
+<p>main函数也有返回值，在<code>&lt;cstdlib&gt;</code>中有定义了两个变量：<code>EXIT_FAILURE</code>和<code>EXIT_SUCCESS</code>。</p>
+<p>声明返回数组指针的函数如下所示：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (*func(parameter_list))[array_len];</span><br></pre></td></tr></tbody></table></figure>
+<p>c11可以使用尾置返回类型，如下所示：</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auto func(int i) -&gt; int(*)[10];</span><br></pre></td></tr></tbody></table></figure>
+<p>还可以用decltype来声明返回类型：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> odd[] = {<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>};</span><br><span class="line"><span class="keyword">int</span> even[] = {<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>};</span><br><span class="line"><span class="keyword">decltype</span>(odd) *arrPtr(<span class="keyword">int</span> i){</span><br><span class="line">    <span class="keyword">return</span> (i%<span class="number">2</span>)?&amp;odd:&amp;even;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    <span class="keyword">auto</span> i = arrPtr(<span class="number">3</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;i[<span class="number">0</span>][<span class="number">3</span>]&lt;&lt;<span class="built_in">endl</span>;<span class="comment">// 7</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>引用和常引用是不同的参数，可以重载函数。</p>
+<p>有一些编译器定义的常量字符串可以使用：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span>&lt;&lt;__func__&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;__FILE__&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;__LINE__&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;__TIME__&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;__DATE__&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>对于函数指针而言，以下两种等价：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p = func;</span><br><span class="line">p = &amp;func;</span><br></pre></td></tr></tbody></table></figure>
+<p>返回值可以为函数指针，可以通过using来帮助定义。</p>
+<h3 id="第七章-类"><a href="#第七章-类" class="headerlink" title="第七章 类"></a>第七章 类</h3><p>可以在变量前加mutable，这样即使是const成员函数也能修改它。</p>
+<p>返回<code>*this</code>时候如果不返回引用，则会拷贝。</p>
+<p>用赋值符号当构造函数的时候，不能赋值给常量和引用。</p>
+<p>初始化列表顺序不确定。</p>
+<p>c11有委托构造函数，可以用自己的其他构造函数来构造。</p>
+<p>可以加<code>explicit</code>来防止隐式转换。<code>explicit</code>只应该出现在声明，出现一次就行。</p>
+<p>聚合类：都是public，没有构造函数，没有类内初始值，并且没有virtual函数，可以用花括号初始化。</p>
+<p>当类所有数据成员都是字面值，且包含constexpr构造函数，类内初始值没有或者是常量表达式，自带析构函数的可以成为字面值常量类。</p>
+<h3 id="第八章-IO库"><a href="#第八章-IO库" class="headerlink" title="第八章 IO库"></a>第八章 IO库</h3><p>IO库有三种：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">//istream wistream读 ostream wostream写 iostream wiostream读写</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="comment">//文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="comment">//字符串</span></span><br></pre></td></tr></tbody></table></figure>
+<p>IO对象没有拷贝和赋值。</p>
+<p>io库有条件状态，如崩溃，操作失败，eof等。</p>
+<p>程序崩溃则缓冲区不会刷新。</p>
+<p>我们可以将一个istream关联到ostream上，如默认cin总关联到cout上。这样cin时候会刷新cout缓冲区。</p>
+<p>文件流对象时候允许接收文件名字符串为构造参数，创建<code>ifstream</code>并打开该文件。</p>
+<p>如果定义了空文件流对象，可以随后用open关联到文件流。</p>
+<p>流存在文件模式，如<code>app</code>每次写之前均定位到文件末尾等。</p>
+<h3 id="第九章-顺序容器"><a href="#第九章-顺序容器" class="headerlink" title="第九章 顺序容器"></a>第九章 顺序容器</h3><p>迭代器范围是左闭合右开。</p>
+<p>标准库array具有固定大小。</p>
+<p>如果容器是vector或string，则存储空间重新分配后所有迭代器，指针，引用都失效。没重新分配则指向之后的迭代器，指针引用会失效。</p>
+<p>deque插入首尾之外的位置都会失效。如果首尾，则只有迭代器会失效。</p>
+<p>对于list和forward_list，添加元素都有效。</p>
+<p>删除元素后，list和forward_list其他位置迭代器有效,deque则首尾之外全失效，删尾巴会尾后迭代器失效，其他不影响。删除首则都不影响。对于vector或string则之前的有效。</p>
+<p>每次插入后重新调用<code>end()</code>来便于不失效。</p>
+<p>string有<code>find</code> <code>rfind</code> <code>find_first_of</code> <code>find_last_of</code> <code>find_first_not_of</code> <code>find_last_not_of</code>搜索操作。</p>
+<p><code>stack</code> <code>queue</code> <code>priority_queue</code>属于适配器，可以接收已有的容器类型，也可以更改容器类型。</p>
+<h3 id="第十章-泛型算法"><a href="#第十章-泛型算法" class="headerlink" title="第十章 泛型算法"></a>第十章 泛型算法</h3><p>迭代器使得算法不依赖于容器，但算法依赖于元素类型操作。泛型算法只运行于迭代器之上，不会改变底层容器大小。</p>
+<p>算法只读不改变元素，如<code>find</code>,<code>count</code>,<code>accumulate</code>等。</p>
+<p><code>equal</code>接收三个迭代器，第一个序列的头，第一个序列的尾，第二个序列的头（因为元素数量至少要一样多）。</p>
+<p><code>fill</code>可以写入元素 ，但首先要创建元素。</p>
+<p><code>unique</code>返回迭代器，不重复的在前面，重复的在后面。算法不增加删除，因此要在之后erase。</p>
+<p>插入迭代器：可以用来插入元素。</p>
+<p>流迭代器：绑定子啊输入输出流上，可以遍历关联的IO流。</p>
+<p>移动迭代器：不是拷贝而是移动元素。</p>
+<script>
+        document.querySelectorAll('.not-gallery-item')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div><div class="article-licensing box"><div class="licensing-title"><p>C++ Primer学习笔记</p><p><a href="https://exgod22356.github.com/Science/c-primer学习笔记/">https://exgod22356.github.com/Science/c-primer学习笔记/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>王钦砚</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-03-08</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C++</a><a class="link-muted mr-2" rel="tag" href="/tags/%E5%BC%80%E5%8F%91/">开发</a></div><div class="sharethis-inline-share-buttons"></div><script src="//platform-api.sharethis.com/js/sharethis.js#property=5ab6f60ace89f00013641890&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Science/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">操作系统课程学习</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Gaman/gaman%E6%B8%B8%E6%88%8F%E8%AF%84%E6%B5%8B%E7%B3%BB%E5%88%97-0%EF%BC%9A%E7%9B%AE%E5%BD%95%E4%B8%8E%E6%9D%82%E8%B0%88/"><span class="level-item">Gaman游戏评测系列#0：目录与杂谈</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/gallery/endo_yurika.jpg" alt="王钦砚"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">王钦砚</p><p class="is-size-6 is-block">Web Developer</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">42</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">27</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#第一章-开始"><span class="level-left"><span class="level-item">1</span><span class="level-item">第一章 开始</span></span></a></li><li><a class="level is-mobile" href="#第二章-变量与基本类型"><span class="level-left"><span class="level-item">2</span><span class="level-item">第二章 变量与基本类型</span></span></a></li><li><a class="level is-mobile" href="#第三章-字符串-向量和数组"><span class="level-left"><span class="level-item">3</span><span class="level-item">第三章 字符串 向量和数组</span></span></a></li><li><a class="level is-mobile" href="#第四章-表达式"><span class="level-left"><span class="level-item">4</span><span class="level-item">第四章 表达式</span></span></a></li><li><a class="level is-mobile" href="#第五章-语句"><span class="level-left"><span class="level-item">5</span><span class="level-item">第五章 语句</span></span></a></li><li><a class="level is-mobile" href="#第六章-函数"><span class="level-left"><span class="level-item">6</span><span class="level-item">第六章 函数</span></span></a></li><li><a class="level is-mobile" href="#第七章-类"><span class="level-left"><span class="level-item">7</span><span class="level-item">第七章 类</span></span></a></li><li><a class="level is-mobile" href="#第八章-IO库"><span class="level-left"><span class="level-item">8</span><span class="level-item">第八章 IO库</span></span></a></li><li><a class="level is-mobile" href="#第九章-顺序容器"><span class="level-left"><span class="level-item">9</span><span class="level-item">第九章 顺序容器</span></span></a></li><li><a class="level is-mobile" href="#第十章-泛型算法"><span class="level-left"><span class="level-item">10</span><span class="level-item">第十章 泛型算法</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ego/"><span class="level-start"><span class="level-item">Ego</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Gaman/"><span class="level-start"><span class="level-item">Gaman</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Romance/"><span class="level-start"><span class="level-item">Romance</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/categories/Science/"><span class="level-start"><span class="level-item">Science</span></span><span class="level-end"><span class="level-item tag">32</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ACM/"><span class="tag">ACM</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C-Primer/"><span class="tag">C++Primer</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GO/"><span class="tag">GO</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Gaman/"><span class="tag">Gaman</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Introduction/"><span class="tag">Introduction</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%81%9A%E9%A2%98%E5%AE%B6/"><span class="tag">做题家</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9F%BA%E7%A1%80/"><span class="tag">基础</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/"><span class="tag">安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/"><span class="tag">容器化</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><span class="tag">操作系统</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A8%A1%E6%9D%BF/"><span class="tag">模板</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E7%BC%96/"><span class="tag">汇编</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tag">编程</span><span class="tag">19</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"><span class="tag">编译原理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/"><span class="tag">网络</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%97%E5%8F%A5/"><span class="tag">诗句</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="tag">读书笔记</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E7%BC%96%E7%A8%8B/"><span class="tag">面向面试编程</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a><p class="is-size-7"><span>&copy; 2021 王钦砚</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><div id="outdated"><h6>Your browser is out-of-date!</h6><p>Update your browser to view this website correctly.&amp;npsb;<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p><p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p></div><script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script><script>window.addEventListener("load", function () {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'object-fit' // display on IE11 or below
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script><!-- hexo injector body_end start -->
+    <script>
+    (() => {
+        function switchTab() {
+            if (!location.hash) {
+              return;
+            }
+            Array
+                .from(document.querySelectorAll('.tab-content'))
+                .forEach($tab => {
+                    $tab.classList.add('is-hidden');
+                });
+            Array
+                .from(document.querySelectorAll('.tabs li'))
+                .forEach($tab => {
+                    $tab.classList.remove('is-active');
+                });
+            const $activeTab = document.querySelector(location.hash);
+            if ($activeTab) {
+                $activeTab.classList.remove('is-hidden');
+            }
+            const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+            if ($tabMenu) {
+                $tabMenu.parentElement.classList.add('is-active');
+            }
+        }
+        switchTab();
+        window.addEventListener('hashchange', switchTab, false);
+    })();
+    </script>
+    <!-- hexo injector body_end end --></body></html>

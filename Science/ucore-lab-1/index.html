@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>uCore lab 1 - Icarus</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#f7f7f7"><meta name="application-name" content="Icaurs - Hexo Theme"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#f7f7f7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Icaurs - Hexo Theme"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本系列旨在完成uCore实验，通过实验了解操作系统的概念，从汇编，c语言编程的角度，以微观的视角了解操作系统的运行过程。本文为本系列第一篇，介绍机器启动到启动os的过程。"><meta property="og:type" content="blog"><meta property="og:title" content="uCore lab 1"><meta property="og:url" content="https://exgod22356.github.com/Science/ucore-lab-1/"><meta property="og:site_name" content="Icarus"><meta property="og:description" content="本系列旨在完成uCore实验，通过实验了解操作系统的概念，从汇编，c语言编程的角度，以微观的视角了解操作系统的运行过程。本文为本系列第一篇，介绍机器启动到启动os的过程。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://exgod22356.github.com/img/og_image.png"><meta property="article:published_time" content="2021-05-03T11:10:30.000Z"><meta property="article:author" content="王钦砚"><meta property="article:tag" content="开发"><meta property="article:tag" content="操作系统"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://exgod22356.github.com/Science/ucore-lab-1/"},"headline":"Icarus","image":["https://exgod22356.github.com/img/og_image.png"],"datePublished":"2021-05-03T11:10:30.000Z","author":{"@type":"Person","name":"王钦砚"},"description":"本系列旨在完成uCore实验，通过实验了解操作系统的概念，从汇编，c语言编程的角度，以微观的视角了解操作系统的运行过程。本文为本系列第一篇，介绍机器启动到启动os的过程。"}</script><link rel="canonical" href="https://exgod22356.github.com/Science/ucore-lab-1/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css"><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Gitter" href="https://gitter.im/"><i class="fab fa-gitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-05-03T11:10:30.000Z" title="2021-05-03T11:10:30.000Z">2021-05-03</time></span><span class="level-item"><a class="link-muted" href="/categories/Science/">Science</a></span><span class="level-item">27 minutes read (About 4063 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">uCore lab 1</h1><div class="content"><p>本系列旨在完成uCore实验，通过实验了解操作系统的概念，从汇编，c语言编程的角度，以微观的视角了解操作系统的运行过程。<br>本文为本系列第一篇，介绍机器启动到启动os的过程。   </p>
+<a id="more"></a>   
+
+<h2 id="从机器启动到操作系统运行"><a href="#从机器启动到操作系统运行" class="headerlink" title="从机器启动到操作系统运行"></a>从机器启动到操作系统运行</h2><h3 id="BIOS-启动"><a href="#BIOS-启动" class="headerlink" title="BIOS 启动"></a>BIOS 启动</h3><p>计算机加电后先完成基本IO初始化和引导加载功能。系统软件初始化由BIOS与OS Bootloader完成。</p>
+<p>BIOS是固化在计算机ROM上的软件，为上层软件提供最为底层的硬件控制与支持。CPU从0XFFFFFFF0开始执行，存放一条跳转指令，跳转到BIOS例行程序起始点，完成硬件自检和初始化后，选择启动设备读取第一扇区到内存的特殊位置0x7c00处，CPU控制权交给该地址，开始执行。</p>
+<h3 id="Bootloader启动过程"><a href="#Bootloader启动过程" class="headerlink" title="Bootloader启动过程"></a>Bootloader启动过程</h3><p>Bootloader工作包括：</p>
+<ul>
+<li>切换到保护模式，启用分段机制。</li>
+<li>读取ELF执行文件的ucore操作系统到内存。</li>
+<li>显示字符串信息。</li>
+<li>把控制权交给操作系统。</li>
+</ul>
+<p><strong>保护模式与分段机制</strong></p>
+<p>当Intel 80386进入保护模式后才能充分发挥功能，提供更好的保护与更大的寻址空间。</p>
+<p><strong>实模式</strong></p>
+<p>当Bootloader接手工作后，PC处于实模式，可访问的物理内存空间不超过1MB，将内存看为分段的区域，代码和数据位于不同区域，此时指针指向的是实际的地址。可以通过修改A20地址线来完成转换。</p>
+<p><strong>保护模式</strong></p>
+<p>保护模式地址线才全部有效，可采用分段存储管理和分页存储管理，为存储管理保护提供了硬件支持。通过提供特权级和特权检查机制，实现资源共享又能保证安全。</p>
+<p>在保护模式下有两个段表GDT和LDT可以有64TB逻辑空间，但实际空间还是只有4GB，ucore只用到了GDT。</p>
+<p><strong>分段存储管理机制</strong></p>
+<p>分段机制涉及4个关键内容：逻辑地址，段描述符，段描述符表，段选择子（段寄存器）。</p>
+<p>分段地址转换：CPU将逻辑地址中段选择子作为段描述符号表的索引，找到段描述符，之后加上偏移值得到线性地址，后续可以将线性地址转换为物理地址。</p>
+<p>段描述符内容如下：</p>
+<ul>
+<li>段基地址：线性空间中段的起始地址，80386保护模式中任何一个段都可以从任何一个字节开始。</li>
+<li>段界限：规定段的大小，80386保护模式下以20位表示，可以用字节为单位或者4K字节为单位。</li>
+<li>段属性：<ul>
+<li>粒度位：即以字节为单位或4K字节为单位。</li>
+<li>类型：代码段还是数据段。读写执行权限。段的扩展方向。</li>
+<li>描述符特权级位：用于实现保护机制。</li>
+<li>段存在位：如果非法则不能用来实现地址转换，产生异常。</li>
+<li>已访问位：处理器访问该段时候自动设置。</li>
+</ul>
+</li>
+</ul>
+<p>全局描述符号表：保存多个段描述符的数组，但由于GDT不能有自己之内的描述定义，因此定义了特殊的段GDTR。</p>
+<p>选择子：包含索引，表指示位（GDT还是LDT）和特权级。</p>
+<p><strong>保护模式下的特权级</strong></p>
+<p>保护模式下有四个，从0到3,主要保护内存，IO端口以及执行特殊机器指令的能力。对于ring 0之外运行这些指令会导致异常。</p>
+<p>代码段寄存器的内容不能由mov等指令直接设置，只能被如JMP，INT，CALL指令间接设置。</p>
+<p>代码段CPL字段的值同时等于当前的特权级别。</p>
+<p>特权级比较：比较当前特权级与请求特权级的最大值，并与描述符特权级相比较。</p>
+<p><strong>地址空间</strong></p>
+<p>逻辑地址，物理地址，段描述符表，段描述符，段选择子。</p>
+<p>逻辑地址-&gt;分段地址转换-&gt;线性地址-&gt;分页地址转换-&gt;物理地址。</p>
+<p><strong>硬盘访问概述</strong></p>
+<p>bootloader进入保护模式后下一步从硬盘加载并运行OS。IO操作通过CPU访问硬盘的IO地址寄存器完成。</p>
+<p>访问硬盘流程：</p>
+<ol>
+<li>等待硬盘准备好</li>
+<li>发起读取扇区命令</li>
+<li>等待硬盘准备好</li>
+<li>扇区读到指定内存</li>
+</ol>
+<p><strong>ELF格式概述</strong></p>
+<p>ELF有三种主要类型，可执行文件，可重定位文件与共享目标文件（动态库）。</p>
+<p>link address为链接器配置的内存地址，Load address为实际被加载到内存的位置，这俩不同会导致直接跳转位置错误，直接内存访问（只读数据或bss）错误，堆栈使用不受影响，但可能会覆盖程序数据段。动态链接库会存在不一样。</p>
+<h3 id="操作系统启动过程"><a href="#操作系统启动过程" class="headerlink" title="操作系统启动过程"></a>操作系统启动过程</h3><p>加载到内存后，os接管控制权，实验所完成的工作包括：</p>
+<ul>
+<li>初始化终端</li>
+<li>显示字符串</li>
+<li>显示堆栈中多层函数调用关系</li>
+<li>切换到保护模式，启用分段机制</li>
+<li>初始化中断控制器，初始化时钟中断，实现中断</li>
+<li>执行死循环</li>
+</ul>
+<p><strong>函数堆栈</strong></p>
+<p>函数调用可分为push指令入参，call指令，call指令暗含将下一跳指令地址压栈动作。函数体之前会有类似如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></tbody></table></figure>
+<p>函数调用前会有如下数据顺序入栈：参数，返回地址，ebp寄存器。</p>
+<p><strong>中断和异常</strong></p>
+<p>有三种特殊中断产生是异步产生，产生时间不确定，与CPU无关，称为异步中断也叫外部中断，CPU执行期间检测到违法指令称为内部终端，也叫trap。</p>
+<p>在保护模式下，收到中断（8259A）时候会暂停，跳转到相关例程中，处理完成后再跳回，需要中断描述符号表IDT负责找到关系，而IDT地址存在idtr寄存器中。</p>
+<p>IDT是八字节描述符数组，中断号乘以8为IDT索引，LIDT和SIDT可以操作IDTR。</p>
+<p>保护模式下最多有256个中断，0到31被异常使用，32到255用于自定义。</p>
+<p>IDT gate description用于标识中断或trap，当用中断gate时候，会禁止中断，避免重复中断，使用trap gate时候会保持原样，不去禁止或打开。</p>
+<p>CPU收到中断事件，打断当前程序或者任务执行，跳转到中断例程序流程如下：</p>
+<ul>
+<li>执行完每一条指令后，都会确认在执行刚才指令的过程中中断控制器是否发送请求过来，有则会在相应的时钟脉冲到来的时候从总线读取请求对应的中断向量。</li>
+<li>根据中断向量在IDT找到对应中断描述符，符号内有中断服务例程的段选择子。</li>
+<li>根据段选择子在GDT里面找到对应段描述符，其中保存有段基址和属性信息，得到起始地址，跳转到该地址。</li>
+<li>根据CPL和DPL看是否发生了特权级转换，如果转换则从任务描述符（TSS）中获得该程序的内核栈地址，包含内核态的ss和sp（ss：sp地址形式），将系统当前使用的栈换成内核栈，换掉ss，sp，将用户态ss，sp压入内核栈保存。</li>
+<li>CPU保存寄存器值来保存现场。</li>
+<li>将中断服务例程的段描述符的第一条指令加载到cs和eip寄存器，开始执行例程。</li>
+</ul>
+<p>在中断服务例程处理完成后需要通过iret指令恢复被打断的程序的执行执行如下：</p>
+<ul>
+<li>从内核栈弹出现场信息，即eflags，cs，eip等。</li>
+<li>如果存在特权级转换，则弹出ss，sp，切换回用户态栈。</li>
+<li>如果此次处理带错误码的异常，cpu恢复现场时候不会弹出错误码，需要软件编程弹出错误码。</li>
+</ul>
+<p>中断处理的特权级转换通过门描述符来确定，产生中断后一定是向相等或更高特权级转换，结果的CPL必须等于目的代码段的DPL。如果中断由用户态指令触发，则目标DPL必须具有比CPL相同或者更低的特权，防止随意中断。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="1：makefile编写-理解make执行文件过程-了解主引导扇区"><a href="#1：makefile编写-理解make执行文件过程-了解主引导扇区" class="headerlink" title="1：makefile编写 理解make执行文件过程 了解主引导扇区"></a>1：makefile编写 理解make执行文件过程 了解主引导扇区</h3><p><strong>makefile基本原则</strong></p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">targets : prerequisites</span><br><span class="line">    command</span><br><span class="line"><span class="comment">#目标（可执行文件或object file）：依赖文件（一个或者多个）</span></span><br><span class="line"><span class="comment">#   命令（编译命令）</span></span><br></pre></td></tr></tbody></table></figure>
+<p>示例如下</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">test:test.c</span></span><br><span class="line">    gcc -o test test.c</span><br></pre></td></tr></tbody></table></figure>
+<p>四种赋值：</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x:=foo </span><br><span class="line"><span class="comment">#简单赋值</span></span><br><span class="line"></span><br><span class="line">x=foo</span><br><span class="line">y=<span class="variable">$(x)</span>b</span><br><span class="line">x=new</span><br><span class="line"><span class="comment">#递归赋值，会改变用到此值的所有值</span></span><br><span class="line"></span><br><span class="line">x?=a</span><br><span class="line"><span class="comment">#条件赋值，未定义则赋值</span></span><br><span class="line"></span><br><span class="line">x+=b</span><br><span class="line"><span class="comment">#追加赋值，会增加一个空格后加上去</span></span><br></pre></td></tr></tbody></table></figure>
+<p>一些基本函数</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">call</span> &lt;expression&gt;,&lt;parm1&gt;,&lt;parm2&gt;,&lt;parm3&gt;,...)</span></span><br><span class="line"><span class="comment">#将参数填入表达式</span></span><br><span class="line"><span class="variable">$(<span class="built_in">if</span> &lt;condition&gt;,&lt;then-part&gt;,&lt;else-part&gt;)</span></span><br><span class="line"><span class="comment">#条件语句</span></span><br></pre></td></tr></tbody></table></figure>
+<p>一些常见的自动变量</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">test:test.o test1.o test2.o</span></span><br><span class="line">         gcc -o <span class="variable">$@</span> <span class="variable">$^</span></span><br><span class="line"><span class="comment"># $@为目标文件名，这里为test</span></span><br><span class="line"><span class="comment"># $^为依赖的文件，这里为两个o</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>实战分析</strong></p>
+<p>分析lab1中的makefile，可以分为一下几个部分：</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(UCOREIMG)</span>: <span class="variable">$(kernel)</span> <span class="variable">$(bootblock)</span></span><br><span class="line">	<span class="variable">$(V)</span>dd if=/dev/zero of=<span class="variable">$@</span> count=10000</span><br><span class="line">	<span class="variable">$(V)</span>dd if=<span class="variable">$(bootblock)</span> of=<span class="variable">$@</span> conv=notrunc</span><br><span class="line">	<span class="variable">$(V)</span>dd if=<span class="variable">$(kernel)</span> of=<span class="variable">$@</span> seek=1 conv=notrunc</span><br></pre></td></tr></tbody></table></figure>
+<p>上述为ucore.img部分，即依赖kernel和bootlock部分。命令中，dd用于读取，转换，输出文件，<code>if</code>和<code>of</code>即为输入文件和输出文件，<code>count</code>代表拷贝块大小，<code>seek</code>代表跳过blocks个块再开始复制，<code>notrunc</code>即不截断输出文件。该行目的为生成10000块的文件，每块默认512字节，用0填充，bootblock写入第一块，kernel写入第二块。</p>
+<p>再来观察kernel：</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">KOBJS	= <span class="variable">$(<span class="built_in">call</span> read_packet,kernel libs)</span></span><br><span class="line">kernel = <span class="variable">$(<span class="built_in">call</span> totarget,kernel)</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$(kernel)</span>: tools/kernel.ld</span><br><span class="line"></span><br><span class="line"><span class="variable">$(kernel)</span>: <span class="variable">$(KOBJS)</span></span><br><span class="line">	@echo + ld <span class="variable">$@</span></span><br><span class="line">	<span class="variable">$(V)</span><span class="variable">$(LD)</span> <span class="variable">$(LDFLAGS)</span> -T tools/kernel.ld -o <span class="variable">$@</span> <span class="variable">$(KOBJS)</span></span><br><span class="line">	@<span class="variable">$(OBJDUMP)</span> -S <span class="variable">$@</span> &gt; <span class="variable">$(<span class="built_in">call</span> asmfile,kernel)</span></span><br><span class="line">	@<span class="variable">$(OBJDUMP)</span> -t <span class="variable">$@</span> | <span class="variable">$(SED)</span> '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' &gt; <span class="variable">$(<span class="built_in">call</span> symfile,kernel)</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$(<span class="built_in">call</span> create_target,kernel)</span></span><br></pre></td></tr></tbody></table></figure>
+<p><code>kernel.ld</code>不必多说，关注下面的<code>KOBJS</code>，即将obj文件都链接起来。obj文件来自于<code>read_packet</code>，而<code>packet</code>文件来自如下：</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$(<span class="built_in">call</span> add_files_cc,$(<span class="built_in">call</span> listf_cc,<span class="variable">$(KSRCDIR)</span>)</span>,kernel,<span class="variable">$(KCFLAGS)</span>)</span><br><span class="line"></span><br><span class="line">add_files_cc = <span class="variable">$(<span class="built_in">call</span> add_files,$(1)</span>,<span class="variable">$(CC)</span>,<span class="variable">$(CFLAGS)</span> $(3),$(2),$(4))</span><br></pre></td></tr></tbody></table></figure>
+<p>这其中<code>add_files_cc</code>传入CC（编译器，clang还是gcc），CFLAGS编译参数。KCFLAGS即include的files，KSRCDIR即要编译的文件目录。实际执行命令如下：</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gcc -Ikern/init/ -fno-builtin -Wall -ggdb -m32 \</span><br><span class="line">	-gstabs -nostdinc  -fno-stack-protector \</span><br><span class="line">	-Ilibs/ -Ikern/debug/ -Ikern/driver/ \</span><br><span class="line">	-Ikern/trap/ -Ikern/mm/ -c kern/init/init.c \</span><br><span class="line">	-o obj/kern/init/init.o</span><br></pre></td></tr></tbody></table></figure>
+<p>回到kernel，下面一行为ld，即链接器，链接所有obj文件。</p>
+<p>之后反汇编到asm文件，再处理一下得到sym文件。</p>
+<p>回到img，除了kernel，下一个为bootblock，如下所示：</p>
+<figure class="highlight makefile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">bootfiles = <span class="variable">$(<span class="built_in">call</span> listf_cc,boot)</span></span><br><span class="line"><span class="variable">$(<span class="built_in">foreach</span> f,<span class="variable">$(bootfiles)</span>,$(<span class="built_in">call</span> cc_compile,<span class="variable">$(f)</span>,<span class="variable">$(CC)</span>,<span class="variable">$(CFLAGS)</span> -Os -nostdinc)</span>)</span><br><span class="line"></span><br><span class="line">bootblock = <span class="variable">$(<span class="built_in">call</span> totarget,bootblock)</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$(bootblock)</span>: <span class="variable">$(<span class="built_in">call</span> toobj,<span class="variable">$(bootfiles)</span>)</span> | <span class="variable">$(<span class="built_in">call</span> totarget,sign)</span></span><br><span class="line">	@echo + ld <span class="variable">$@</span></span><br><span class="line">	<span class="variable">$(V)</span><span class="variable">$(LD)</span> <span class="variable">$(LDFLAGS)</span> -N -e start -Ttext 0x7C00 <span class="variable">$^</span> -o <span class="variable">$(<span class="built_in">call</span> toobj,bootblock)</span></span><br><span class="line">	@<span class="variable">$(OBJDUMP)</span> -S <span class="variable">$(<span class="built_in">call</span> objfile,bootblock)</span> &gt; <span class="variable">$(<span class="built_in">call</span> asmfile,bootblock)</span></span><br><span class="line">	@<span class="variable">$(OBJCOPY)</span> -S -O binary <span class="variable">$(<span class="built_in">call</span> objfile,bootblock)</span> <span class="variable">$(<span class="built_in">call</span> outfile,bootblock)</span></span><br><span class="line">	@<span class="variable">$(<span class="built_in">call</span> totarget,sign)</span> <span class="variable">$(<span class="built_in">call</span> outfile,bootblock)</span> <span class="variable">$(bootblock)</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$(<span class="built_in">call</span> create_target,bootblock)</span></span><br></pre></td></tr></tbody></table></figure>
+<p>简要分析，首先<code>bootblock</code>需要boot文件夹下的files编译成obj，然后ld链接，然后需要反汇编到asm文件便于查看，再objcopy去掉符号和重定位，生成到.out文件中，最后使用sign工具处理.out，得到bootblock。</p>
+<p>简要来分析编译时候关键参数：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-ggdb 生成调试信息</span><br><span class="line">-m32 生成32位环境代码</span><br><span class="line">-gstabs 生成stabs格式调试信息，从而可以显示出便于开发者阅读的函数调用</span><br><span class="line">-nostdinc 不使用标准库，因为是内核</span><br><span class="line">-fno-stack-protector 不生成检测缓冲区溢出的代码，内核用不到</span><br><span class="line">-Os 为减小代码大小而优化</span><br><span class="line">-I&lt;dir&gt; 添加搜索头文件路径</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>练习1.2 一个被系统认为是符合规范的硬盘主引导扇区的特征是什么?</strong></p>
+<p>由文档我们可以知道，sign.c是用来生成一个符合规范的硬盘主引导扇区的。观察sign.c代码可以看出，它接收os参数，检测参数对应文件长度，读入512的缓冲区，并且将最后两个字节，即<code>buf[510] = 0x55;</code>以及<code>buf[511] = 0xAA;</code>，从而得到正确的硬盘主引导扇区。</p>
+<h3 id="2：使用qemu执行并调试lab1中的软件"><a href="#2：使用qemu执行并调试lab1中的软件" class="headerlink" title="2：使用qemu执行并调试lab1中的软件"></a>2：使用qemu执行并调试lab1中的软件</h3><p>TODO</p>
+<h3 id="3：分析bootloader进入保护模式的过程"><a href="#3：分析bootloader进入保护模式的过程" class="headerlink" title="3：分析bootloader进入保护模式的过程"></a>3：分析bootloader进入保护模式的过程</h3><p>阅读bootasm.S源码解决以下问题</p>
+<ul>
+<li>为何开启A20，以及如何开启A20</li>
+<li>如何初始化GDT表</li>
+<li>如何使能和进入保护模式</li>
+</ul>
+<p>观察源码，首先从第一个扇区读取内容到地址<code>0x7c00</code>处，此时<code>$cs=0x0</code>并且<code>$ip=0x7c00</code>，得到<code>cs:ip</code>。开始进入汇编，开始代码如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">start:</span><br><span class="line">.code16                                             # Assemble for 16-bit mode</span><br><span class="line">    cli                                             # Disable interrupts</span><br><span class="line">    cld                                             # String operations increment</span><br><span class="line"></span><br><span class="line">    # Set up the important data segment registers (DS, ES, SS).</span><br><span class="line">    xorw %ax, %ax                                   # Segment number zero</span><br><span class="line">    movw %ax, %ds                                   # -&gt; Data Segment</span><br><span class="line">    movw %ax, %es                                   # -&gt; Extra Segment</span><br><span class="line">    movw %ax, %ss                                   # -&gt; Stack Segment</span><br></pre></td></tr></tbody></table></figure>
+<p>cli指令关闭中断，cld指令使得方向标志位复位，从而按递增方向增长。</p>
+<p>xor操作用于清零，mov操作用于将数据段，代码段，栈段寄存器也清零。初始化完成之后，开始打开A20线。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">seta20.1:</span><br><span class="line">    inb $0x64, %al                                  # Wait for not busy(8042 input buffer empty).</span><br><span class="line">    testb $0x2, %al</span><br><span class="line">    jnz seta20.1</span><br><span class="line"></span><br><span class="line">    movb $0xd1, %al                                 # 0xd1 -&gt; port 0x64</span><br><span class="line">    outb %al, $0x64                                 # 0xd1 means: write data to 8042's P2 port</span><br><span class="line"></span><br><span class="line">seta20.2:</span><br><span class="line">    inb $0x64, %al                                  # Wait for not busy(8042 input buffer empty).</span><br><span class="line">    testb $0x2, %al</span><br><span class="line">    jnz seta20.2</span><br><span class="line"></span><br><span class="line">    movb $0xdf, %al                                 # 0xdf -&gt; port 0x60</span><br><span class="line">    outb %al, $0x60                                 # 0xdf = 11011111, means set P2's A20 bit(the 1 bit) to 1</span><br></pre></td></tr></tbody></table></figure>
+<p>使用8042控制器来控制A20 gate。操作简单来说如下：</p>
+<ul>
+<li>读0x60端口，为读output buffer</li>
+<li>写0x60端口，为写input buffer</li>
+<li>读0x64端口，为读status register</li>
+<li>操作control register：先向0x64写一个命令，根据命令从60读control register命令或者写60一个control register命令。</li>
+</ul>
+<p>实际操作起来流程为：读0x64观察8042是否忙，忙则继续读直到不忙，然后向0x64写入0xd1,代表即将写入8042的输出端口。然后再次等待，等待完成后向0x60写入0xdf，代表打开A20地址线。</p>
+<p>对于全局描述符表GDT而言，下面使用lgdt指令直接加载即可：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lgdt gdtdesc</span><br></pre></td></tr></tbody></table></figure>
+<p>然后将控制寄存器cr0的PE位置置为1,即可开启保护模式：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movl %cr0, %eax</span><br><span class="line">orl $CR0_PE_ON, %eax</span><br><span class="line">movl %eax, %cr0</span><br></pre></td></tr></tbody></table></figure>
+<p>然后跳转到32位代码区：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ljmp $PROT_MODE_CSEG, $protcseg</span><br></pre></td></tr></tbody></table></figure>
+<p>设置寄存器，建立堆栈，进入boot主方法：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">movw $PROT_MODE_DSEG, %ax                       # Our data segment selector</span><br><span class="line">movw %ax, %ds                                   # -&gt; DS: Data Segment</span><br><span class="line">movw %ax, %es                                   # -&gt; ES: Extra Segment</span><br><span class="line">movw %ax, %fs                                   # -&gt; FS</span><br><span class="line">movw %ax, %gs                                   # -&gt; GS</span><br><span class="line">movw %ax, %ss                                   # -&gt; SS: Stack Segment</span><br><span class="line"></span><br><span class="line">#Set up the stack pointer and call into C. The stack region is from 0--start(0x7c00)</span><br><span class="line">movl $0x0, %ebp</span><br><span class="line">movl $start, %esp</span><br><span class="line">call bootmain</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="4：分析bootloader加载ELF格式的OS的过程"><a href="#4：分析bootloader加载ELF格式的OS的过程" class="headerlink" title="4：分析bootloader加载ELF格式的OS的过程"></a>4：分析bootloader加载ELF格式的OS的过程</h3><p>TODO</p>
+<h3 id="5：实现函数调用堆栈跟踪函数-（需要编程）"><a href="#5：实现函数调用堆栈跟踪函数-（需要编程）" class="headerlink" title="5：实现函数调用堆栈跟踪函数 （需要编程）"></a>5：实现函数调用堆栈跟踪函数 （需要编程）</h3><p>TODO</p>
+<h3 id="6：完善中断初始化和处理-（需要编程）"><a href="#6：完善中断初始化和处理-（需要编程）" class="headerlink" title="6：完善中断初始化和处理 （需要编程）"></a>6：完善中断初始化和处理 （需要编程）</h3><p>TODO</p>
+<script>
+        document.querySelectorAll('.not-gallery-item')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div><div class="article-licensing box"><div class="licensing-title"><p>uCore lab 1</p><p><a href="https://exgod22356.github.com/Science/ucore-lab-1/">https://exgod22356.github.com/Science/ucore-lab-1/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>王钦砚</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-05-03</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E5%BC%80%E5%8F%91/">开发</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="sharethis-inline-share-buttons"></div><script src="//platform-api.sharethis.com/js/sharethis.js#property=5ab6f60ace89f00013641890&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Science/%E5%9B%BE%E8%A7%A3http%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="level-item">图解HTTP读书笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/gallery/endo_yurika.jpg" alt="王钦砚"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">王钦砚</p><p class="is-size-6 is-block">Web Developer</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">42</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">27</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#从机器启动到操作系统运行"><span class="level-left"><span class="level-item">1</span><span class="level-item">从机器启动到操作系统运行</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#BIOS-启动"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">BIOS 启动</span></span></a></li><li><a class="level is-mobile" href="#Bootloader启动过程"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">Bootloader启动过程</span></span></a></li><li><a class="level is-mobile" href="#操作系统启动过程"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">操作系统启动过程</span></span></a></li></ul></li><li><a class="level is-mobile" href="#练习"><span class="level-left"><span class="level-item">2</span><span class="level-item">练习</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1：makefile编写-理解make执行文件过程-了解主引导扇区"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">1：makefile编写 理解make执行文件过程 了解主引导扇区</span></span></a></li><li><a class="level is-mobile" href="#2：使用qemu执行并调试lab1中的软件"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">2：使用qemu执行并调试lab1中的软件</span></span></a></li><li><a class="level is-mobile" href="#3：分析bootloader进入保护模式的过程"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">3：分析bootloader进入保护模式的过程</span></span></a></li><li><a class="level is-mobile" href="#4：分析bootloader加载ELF格式的OS的过程"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">4：分析bootloader加载ELF格式的OS的过程</span></span></a></li><li><a class="level is-mobile" href="#5：实现函数调用堆栈跟踪函数-（需要编程）"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">5：实现函数调用堆栈跟踪函数 （需要编程）</span></span></a></li><li><a class="level is-mobile" href="#6：完善中断初始化和处理-（需要编程）"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">6：完善中断初始化和处理 （需要编程）</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ego/"><span class="level-start"><span class="level-item">Ego</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Gaman/"><span class="level-start"><span class="level-item">Gaman</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Romance/"><span class="level-start"><span class="level-item">Romance</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/categories/Science/"><span class="level-start"><span class="level-item">Science</span></span><span class="level-end"><span class="level-item tag">32</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ACM/"><span class="tag">ACM</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C-Primer/"><span class="tag">C++Primer</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GO/"><span class="tag">GO</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Gaman/"><span class="tag">Gaman</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Introduction/"><span class="tag">Introduction</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%81%9A%E9%A2%98%E5%AE%B6/"><span class="tag">做题家</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9F%BA%E7%A1%80/"><span class="tag">基础</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/"><span class="tag">安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/"><span class="tag">容器化</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">9</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><span class="tag">操作系统</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A8%A1%E6%9D%BF/"><span class="tag">模板</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E7%BC%96/"><span class="tag">汇编</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tag">编程</span><span class="tag">19</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"><span class="tag">编译原理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/"><span class="tag">网络</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%97%E5%8F%A5/"><span class="tag">诗句</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="tag">读书笔记</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E7%BC%96%E7%A8%8B/"><span class="tag">面向面试编程</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a><p class="is-size-7"><span>&copy; 2021 王钦砚</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><div id="outdated"><h6>Your browser is out-of-date!</h6><p>Update your browser to view this website correctly.&amp;npsb;<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p><p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p></div><script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script><script>window.addEventListener("load", function () {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'object-fit' // display on IE11 or below
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script><!-- hexo injector body_end start -->
+    <script>
+    (() => {
+        function switchTab() {
+            if (!location.hash) {
+              return;
+            }
+            Array
+                .from(document.querySelectorAll('.tab-content'))
+                .forEach($tab => {
+                    $tab.classList.add('is-hidden');
+                });
+            Array
+                .from(document.querySelectorAll('.tabs li'))
+                .forEach($tab => {
+                    $tab.classList.remove('is-active');
+                });
+            const $activeTab = document.querySelector(location.hash);
+            if ($activeTab) {
+                $activeTab.classList.remove('is-hidden');
+            }
+            const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+            if ($tabMenu) {
+                $tabMenu.parentElement.classList.add('is-active');
+            }
+        }
+        switchTab();
+        window.addEventListener('hashchange', switchTab, false);
+    })();
+    </script>
+    <!-- hexo injector body_end end --></body></html>
