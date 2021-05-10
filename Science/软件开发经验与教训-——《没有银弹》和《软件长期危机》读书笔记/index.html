@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>软件开发经验与教训  ——《没有银弹》和《软件长期危机》读书笔记 - Icarus</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#f7f7f7"><meta name="application-name" content="Icaurs - Hexo Theme"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="msapplication-TileColor" content="#f7f7f7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Icaurs - Hexo Theme"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="软件开发不仅停留于理论，还需要实践来意识到理论的实用性。本文是一篇随笔，讲了读后感以及自己在实际管理项目的一些经验与教训。"><meta property="og:type" content="blog"><meta property="og:title" content="软件开发经验与教训  ——《没有银弹》和《软件长期危机》读书笔记"><meta property="og:url" content="https://exgod22356.github.com/Science/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%95%99%E8%AE%AD-%E2%80%94%E2%80%94%E3%80%8A%E6%B2%A1%E6%9C%89%E9%93%B6%E5%BC%B9%E3%80%8B%E5%92%8C%E3%80%8A%E8%BD%AF%E4%BB%B6%E9%95%BF%E6%9C%9F%E5%8D%B1%E6%9C%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="Icarus"><meta property="og:description" content="软件开发不仅停留于理论，还需要实践来意识到理论的实用性。本文是一篇随笔，讲了读后感以及自己在实际管理项目的一些经验与教训。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://exgod22356.github.com/img/og_image.png"><meta property="article:published_time" content="2021-05-09T11:10:30.000Z"><meta property="article:author" content="王钦砚"><meta property="article:tag" content="开发"><meta property="article:tag" content="读书笔记"><meta property="article:tag" content="软件工程"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://exgod22356.github.com/Science/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%95%99%E8%AE%AD-%E2%80%94%E2%80%94%E3%80%8A%E6%B2%A1%E6%9C%89%E9%93%B6%E5%BC%B9%E3%80%8B%E5%92%8C%E3%80%8A%E8%BD%AF%E4%BB%B6%E9%95%BF%E6%9C%9F%E5%8D%B1%E6%9C%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"},"headline":"Icarus","image":["https://exgod22356.github.com/img/og_image.png"],"datePublished":"2021-05-09T11:10:30.000Z","author":{"@type":"Person","name":"王钦砚"},"description":"软件开发不仅停留于理论，还需要实践来意识到理论的实用性。本文是一篇随笔，讲了读后感以及自己在实际管理项目的一些经验与教训。"}</script><link rel="canonical" href="https://exgod22356.github.com/Science/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%95%99%E8%AE%AD-%E2%80%94%E2%80%94%E3%80%8A%E6%B2%A1%E6%9C%89%E9%93%B6%E5%BC%B9%E3%80%8B%E5%92%8C%E3%80%8A%E8%BD%AF%E4%BB%B6%E9%95%BF%E6%9C%9F%E5%8D%B1%E6%9C%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css"><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.3.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Gitter" href="https://gitter.im/"><i class="fab fa-gitter"></i></a><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-05-09T11:10:30.000Z" title="2021-05-09T11:10:30.000Z">2021-05-09</time></span><span class="level-item"><a class="link-muted" href="/categories/Science/">Science</a></span><span class="level-item">21 minutes read (About 3197 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">软件开发经验与教训  ——《没有银弹》和《软件长期危机》读书笔记</h1><div class="content"><p>软件开发不仅停留于理论，还需要实践来意识到理论的实用性。本文是一篇随笔，讲了读后感以及自己在实际管理项目的一些经验与教训。<br> <a id="more"></a>  </p>
+<h3 id="创作背景"><a href="#创作背景" class="headerlink" title="创作背景"></a>创作背景</h3><p>《没有银弹》创作于1986年，是都柏林IFIP研讨会的受邀论文。那个年代出现了多种高级语言，出现了面向对象编程，出现了诸多工具，但都很难解决软件的本质问题。没有银弹从软件本质工作于附属性工作出发，尝试寻找提高软件开发效率，解决软件危机的方法。</p>
+<p>《软件长期危机》来自于1994年科学美国人杂志上的一篇文章，从多个案例出发，比如军方的卫星，比如丹佛机场，阐述了软件危机的一些实际体现。此时软件复杂度高速增长，带来了新的软件开发问题。</p>
+<p>两篇文章都诞生于上世纪八九十年代，注意，这个时候是硬件高速发展的年代，Intel在1985年推出了革命性的80386芯片，IBM引领的个人PC浪潮也在这个时代到来，程序的规模达到了前所未有的高度，这导致软件复杂度剧增，传统的软件开发模式难以应对，八九十年代爆发的这种现象也被称为“第二次软件危机”。</p>
+<h3 id="软件危机-历史与现状"><a href="#软件危机-历史与现状" class="headerlink" title="软件危机 历史与现状"></a>软件危机 历史与现状</h3><p>软件危机是指落后的软件生产方式无法满足迅速增长的计算机软件需求，从而导致软件开发与维护过程中出现一系列严重问题的现象。1968年，北约创造了软件危机一词，并提出软件工程的概念，渴望以此来解决软件危机。</p>
+<p>软件危机有着诸多具体表现，比如：</p>
+<ul>
+<li>软件开发费用和进度失控，进度拖延，损害软件质量。</li>
+<li>软件可靠性差，耗费了大量人力物力，正确性难以保证，错误所造成的损失惊人。</li>
+<li>生产出来的软件难以维护，缺少文档，难以定位错误。</li>
+</ul>
+<p>这是软件危机最开始，也就是六七十年代时候的表现，那时候刚刚从小作坊生产变成集约化生产，但效果却不佳，这些实践使得软件工程学的需求提上日程。</p>
+<p>但软件危机并非一成不变，到了八九十年代，也就是第二次软件危机，出现了新的问题：</p>
+<ul>
+<li>硬件成本逐年下降，而软件成本占比却居高不下。软件规模增长很快。</li>
+<li>软件开发的生产率提升难以匹配硬件的生产率提高。</li>
+</ul>
+<p>这个时候，高级语言诞生了，面向对象诞生了，设计模式诞生了，软件工程的各种方法也诞生了，程序员们终于不再用晦涩的底层语言来编写，但实际上，生产率并没有显著提高。</p>
+<p>但硬件并没有停止发展，串行化时代要结束了，多核，并行化发展成为了新的趋势。不同的硬件需要不同的软件，与之对应的也要有不同的软件标准，这便意味着混乱。现代的软件开发依然有着上述问题。</p>
+<h3 id="文章观点"><a href="#文章观点" class="headerlink" title="文章观点"></a>文章观点</h3><p>没有银弹提出的，在短期内不存在快速提高生产效率的方法。他将软件开发中所需要的工作分为两部分，必要的本质的工作，以及附属性工作。前者关心的是如何从抽象性问题发展出解决方案，后者则是将构思实现在电脑上所遇到的困难。本质性的问题有着以下的几个特性：</p>
+<ul>
+<li>复杂性：软件需要解决的问题需要牵扯到计算步骤，这是人为的，抽象的智能活动，多半是复杂的。</li>
+<li>隐匿性：尚未完成的软件是看不见的。</li>
+<li>配合性：大型软件环境中接口需要一致，但随着开发进行，这会变得十分困难。</li>
+<li>易变性：软件的环境会改变，硬件会改变，使用认权会改变，这些阻碍了软件开发。</li>
+</ul>
+<p>在文章看来，工具的研发，比如高级语言，比如面向对象，比如专家系统，比如程序验证，这些东西都难以触及到软件开发的本质上的问题。</p>
+<p>就软件的开发来看，第一步是需要理解需求，这意味着与人沟通，而需求本身，依赖于环境，人群，存在着变数。首先要解决的便是让客户与程序设计多打交道，使得需求能被合理地设计出来。</p>
+<p>买软件，而非开发软件属于很好的方法，购买的软件通常具有良好的文档，不去开发往往更好。</p>
+<p>快速原型工具也是提升效率的方法之一。</p>
+<p>增量化开发，而非一次完成全部，能够提升士气。开发模式对于软件开发也有着显著的提升。</p>
+<h3 id="个人经验与观点"><a href="#个人经验与观点" class="headerlink" title="个人经验与观点"></a>个人经验与观点</h3><p>“没有银弹”提出的观点是具有先见性的，但在我个人看来，观点过于悲观。他的主要观点在于“10年内难以将软件开发效率提升一个数量级”，他所列举的样例很正确，“如果附属性工作占90，本质性工作占10%，那么需要将附属性工作全部减为0才能达到一个数量级的提高”。</p>
+<p>本质性的工作确实难以触碰，但是十年过于短暂，而数量级的提高过于惊人。观点正确，但不够现实。软件开发在发展，软件工程化的理念同样在发展，就附属性工作而言，编写高级语言比起编写底层语言所需要的学习成本要降低了许多，高级语言的发展提供了抽象。现在无论是什么工具都相当丰富，降低了交流的成本，能够提升包括需求分析，概念图构建等诸多曾经被认为是“本质性工作”的效率。</p>
+<p>我们可以采用所有严苛的工程化方法去开发，但最后我们会发现人是最大的限制。实质上，工程化本身就是为了约束人。所有”工程“，但凡是有多人参与，都需要考虑一个问题：如何把这些会犯错的人的工作有效整合在一起，让最后得到的结果可行。我自己认为，这是工程化的基本思想。</p>
+<p>我自己目前带了一个项目，开发学校的OnlineJudge系统。最初的版本采用PHP开发，但随着实际运行，我们发现PHP存在严重的性能问题，以及难以维护。我们将效率影响最为严重的部分，也就是交题的部分，迁移到了原来用go语言写的一个滚榜的模块中。之前采用了mq设计，后来采用了gRPC设计，性能够了就抛弃了mq。随着开发，这些模块耦合越来越严重，问题也越积越多。虽然这个系统最后可以运行，但写PHP的人越来越少，为了维护性我们决定重构，这份接力棒也交到了我的手上。</p>
+<p>最开始我对重构拥有充足的信心，因为重构没有很多需要构造的复杂概念，只需要改动部分原先不合理的地方。逻辑问题不大。但事实上则超乎我的预料。</p>
+<p>项目开发总共三四人，最开始确定的是寒假结束能够基本上线，但这面对着第一个问题：人。</p>
+<p>寒假对于学生而言各回各家，也就是需要找人的时候根本找不到人，交流成本无限大，外加上过年，以及放假的效率问题，寒假的开发进度基本没有动。这也是给我的第一个教训：开发需要保持时刻的沟通，至少需要找到人。</p>
+<p>寒假结束后情况并没有改善。这时候开发人员的性格问题得到了体现。有的人属于定好了ddl自己会找机会完成，有的人属于不催就写不动的人。人的问题需要用人的方法来解决，对症下药。我的后端属于后者，这也是我的第二个教训：当催促不管用的时候，需要用更为显著，更为实际的方法，或者说通过威胁来进行进度跟进。这里我采用的是定好ddl，进行验收，验收不过就要请客，造成实际的经济损失的方式会更加记忆深刻。</p>
+<p>但还问题没有结束，这时候有了新的问题：技术性问题。我的后端在技术上不够过关，自己也不愿意交流，导致在实现上出现了相当多的错误。比如接口写错了，该用post时候用get导致get请求被缓存，从而无法正常登录。这个问题相当难以定位。第三个教训：需要正确评估开发人员的技术水平，避免出现超出开发人员的技术水平的问题的出现。</p>
+<p>在总体大致测试无误的时候，开始进行对接，环境问题也是一个折磨。前端的依赖问题导致在实际机器上难以部署，但还好的是没有推翻重来，而是在基础上路由了一下从而解决了。在对接前前后端都说进度稳步推进，但实际上并非如此。这也是第四个教训：“永远不要相信开发人员关于进度的鬼话”。看起来很滑稽，但真正开发的时候，就会知道这是真正的教训了。</p>
+<p>在对接完成后也出现了或大或小的问题，但与项目管理关系不是很大，纯粹是技术问题。到目前为止，oj还没开发完。对于oj，我们的初衷是为了使OJ系统“易于维护”从而进行的重构，但实际而言现在只实现了原来的有限的功能，还没有重构完全。而且，没有文档。这是我第五个教训：可维护性高首先要文档齐全。可维护性的基础基于文档，即使是良好的代码，学习成本依然很高。好的文档才是可维护性的基础。</p>
+<p>实际的经验到此为止，虽然比不上什么大的项目，但确实是亲身经历。软件工程学我一直认为是一门需要实践的科学，有些理论上看起来很美好的东西，比如设计模式，实践起来非常难受，有些不严格按照理论而发展的比如说一些开发模型，反而能够很好地得到使用。这些在书本中存在的理论都需要实践。“软件工程”在本科阶段最大的问题，在我看来，就是没有能很好地实践。本科期间缺少的不是知识，而是能够应用这些知识的，足够多的且技术达标的团队。这些在我看来是很大的阻碍。</p>
+<script>
+        document.querySelectorAll('.not-gallery-item')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script></div><div class="article-licensing box"><div class="licensing-title"><p>软件开发经验与教训  ——《没有银弹》和《软件长期危机》读书笔记</p><p><a href="https://exgod22356.github.com/Science/软件开发经验与教训-——《没有银弹》和《软件长期危机》读书笔记/">https://exgod22356.github.com/Science/软件开发经验与教训-——《没有银弹》和《软件长期危机》读书笔记/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>王钦砚</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-05-09</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="" rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E5%BC%80%E5%8F%91/">开发</a><a class="link-muted mr-2" rel="tag" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><a class="link-muted mr-2" rel="tag" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></div><div class="sharethis-inline-share-buttons"></div><script src="//platform-api.sharethis.com/js/sharethis.js#property=5ab6f60ace89f00013641890&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Science/ucore-lab-1/"><span class="level-item">uCore lab 1</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/gallery/endo_yurika.jpg" alt="王钦砚"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">王钦砚</p><p class="is-size-6 is-block">Web Developer</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">43</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">28</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#创作背景"><span class="level-left"><span class="level-item">1</span><span class="level-item">创作背景</span></span></a></li><li><a class="level is-mobile" href="#软件危机-历史与现状"><span class="level-left"><span class="level-item">2</span><span class="level-item">软件危机 历史与现状</span></span></a></li><li><a class="level is-mobile" href="#文章观点"><span class="level-left"><span class="level-item">3</span><span class="level-item">文章观点</span></span></a></li><li><a class="level is-mobile" href="#个人经验与观点"><span class="level-left"><span class="level-item">4</span><span class="level-item">个人经验与观点</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Ego/"><span class="level-start"><span class="level-item">Ego</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Gaman/"><span class="level-start"><span class="level-item">Gaman</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Romance/"><span class="level-start"><span class="level-item">Romance</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li><li><a class="level is-mobile" href="/categories/Science/"><span class="level-start"><span class="level-item">Science</span></span><span class="level-end"><span class="level-item tag">33</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/ACM/"><span class="tag">ACM</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C/"><span class="tag">C++</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/C-Primer/"><span class="tag">C++Primer</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/GO/"><span class="tag">GO</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Gaman/"><span class="tag">Gaman</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Introduction/"><span class="tag">Introduction</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JavaScript/"><span class="tag">JavaScript</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python/"><span class="tag">python</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%81%9A%E9%A2%98%E5%AE%B6/"><span class="tag">做题家</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"><span class="tag">分布式</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%9F%BA%E7%A1%80/"><span class="tag">基础</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/"><span class="tag">安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%B9%E5%99%A8%E5%8C%96/"><span class="tag">容器化</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%BC%80%E5%8F%91/"><span class="tag">开发</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"><span class="tag">操作系统</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%A8%A1%E6%9D%BF/"><span class="tag">模板</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%B1%87%E7%BC%96/"><span class="tag">汇编</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tag">编程</span><span class="tag">20</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/"><span class="tag">编译原理</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%BD%91%E7%BB%9C/"><span class="tag">网络</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%97%E5%8F%A5/"><span class="tag">诗句</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="tag">读书笔记</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"><span class="tag">软件工程</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E7%BC%96%E7%A8%8B/"><span class="tag">面向面试编程</span><span class="tag">1</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Icarus" height="28"></a><p class="is-size-7"><span>&copy; 2021 王钦砚</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/exgod22356/exgod22356.github.io"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><div id="outdated"><h6>Your browser is out-of-date!</h6><p>Update your browser to view this website correctly.&amp;npsb;<a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p><p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">×</a></p></div><script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script><script>window.addEventListener("load", function () {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'object-fit' // display on IE11 or below
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script><!-- hexo injector body_end start -->
+    <script>
+    (() => {
+        function switchTab() {
+            if (!location.hash) {
+              return;
+            }
+            Array
+                .from(document.querySelectorAll('.tab-content'))
+                .forEach($tab => {
+                    $tab.classList.add('is-hidden');
+                });
+            Array
+                .from(document.querySelectorAll('.tabs li'))
+                .forEach($tab => {
+                    $tab.classList.remove('is-active');
+                });
+            const $activeTab = document.querySelector(location.hash);
+            if ($activeTab) {
+                $activeTab.classList.remove('is-hidden');
+            }
+            const $tabMenu = document.querySelector(`a[href="${location.hash}"]`);
+            if ($tabMenu) {
+                $tabMenu.parentElement.classList.add('is-active');
+            }
+        }
+        switchTab();
+        window.addEventListener('hashchange', switchTab, false);
+    })();
+    </script>
+    <!-- hexo injector body_end end --></body></html>
